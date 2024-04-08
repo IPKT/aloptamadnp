@@ -33,7 +33,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"
         integrity="sha512-/cZZTKETbsuutvNXdPji/z8N+9e+LHq9D60JhcBCigq9I5a2VDEcLzml8PdVlVqzmWlVbhZCuTx+9CTi2xb30A=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
 
     <style>
     /* The switch - the box around the slider */
@@ -221,13 +221,14 @@ font-size: 16px;">
                         <ul class="nav nav-second-level">
                             <li>
                                 <a href="<?=base_url('sosialisasi')?>">Pemetaan Lokasi Sosialisasi</a>
-                            </li>    
+                            </li>
                             <li>
                                 <a href="<?=base_url('sosialisasi/input_page')?>">Input Lokasi Sosialisasi</a>
                             </li>
-                         
+
                             <li>
-                                <a href="<?=base_url('sosialisasi/input_page_kunjungan')?>">Input Kunjungan Sosialisasi</a>
+                                <a href="<?=base_url('sosialisasi/input_page_kunjungan')?>">Input Kunjungan
+                                    Sosialisasi</a>
                             </li>
                             <li class="">
                                 <a href="<?=base_url('sosialisasi/list_kunjungan')?>">List Kunjungan Sosialisasi</a>
@@ -261,10 +262,12 @@ font-size: 16px;">
                                 <a href="<?=base_url('aloptama/input_page/intensity')?>">Input Intensity</a>
                             </li>
                             <li>
-                                <a href="<?=base_url('aloptama/input_page_kunjungan/intensity')?>">Input Kunjungan Intensity</a>
+                                <a href="<?=base_url('aloptama/input_page_kunjungan/intensity')?>">Input Kunjungan
+                                    Intensity</a>
                             </li>
                             <li>
-                                <a href="<?=base_url('aloptama/list_kunjungan/intensity')?>">List Kunjungan Intensity</a>
+                                <a href="<?=base_url('aloptama/list_kunjungan/intensity')?>">List Kunjungan
+                                    Intensity</a>
                             </li>
                             <li>
                                 <a href="<?=base_url('metadata/input_page/intensity')?>">Input Metadata
@@ -351,7 +354,8 @@ font-size: 16px;">
                                 <a href="<?=base_url('aloptama/input_page/seismo')?>">Input seismo</a>
                             </li>
                             <li>
-                                <a href="<?=base_url('aloptama/input_page_kunjungan/seismo')?>">Input Kunjungan seismo</a>
+                                <a href="<?=base_url('aloptama/input_page_kunjungan/seismo')?>">Input Kunjungan
+                                    seismo</a>
                             </li>
                             <li>
                                 <a href="<?=base_url('aloptama/list_kunjungan/seismo')?>">List Kunjungan seismo</a>
@@ -470,23 +474,12 @@ font-size: 16px;">
                                 <a href="<?=base_url('gudang')?>">Daftar Barang</a>
                             </li>
                             <li>
-                                <a href="<?=base_url('gudang/input')?>">Input  Barang</a>
+                                <a href="<?=base_url('gudang/input')?>">Input Barang</a>
                             </li>
                             <li>
                                 <a href="<?=base_url('gudang/barang_keluar')?>">Barang Keluar</a>
                             </li>
-                            <li>
-                                <a href="<?=base_url('int_reis/input_page_kunjungan')?>">Input Kunjungan
-                                    Intensity Reis</a>
-                            </li>
-                            <li>
-                                <a href="<?=base_url('int_reis/list_kunjungan')?>">List Kunjungan Intensity Reis</a>
-                            </li>
-                            <li>
-                                <a href="<?=base_url('int_reis/input_page_kondisi_terkini')?>">Input Kondisi
-                                    Terkini</a>
-                            </li>
-                            <li>
+                            <li class="hidden">
                                 <a href="#">Second Level Link<span class="fa arrow"></span></a>
                                 <ul class="nav nav-third-level">
                                     <li>
@@ -501,6 +494,20 @@ font-size: 16px;">
 
                                 </ul>
 
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-sitemap "></i> Check List Aloptama<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="<?=base_url('checklist/input_page/taman_alat')?>">Checklist Taman Alat</a>
+                            </li>
+                            <li>
+                                <a href="<?=base_url('gudang/input')?>">Input Barang</a>
+                            </li>
+                            <li>
+                                <a href="<?=base_url('gudang/barang_keluar')?>">Barang Keluar</a>
                             </li>
                         </ul>
                     </li>

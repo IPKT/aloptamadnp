@@ -24,6 +24,7 @@
                 <th>Kondisi</th>
                 <th>Sumber</th>
                 <th>Tanggal Keluar</th>
+                <th>Tujuan</th>
                 <th>Catatan</th>
                 <th>Status</th>
                 <th>Action</th>
@@ -41,16 +42,18 @@
                 <td><?=$value->kondisi?></td>
                 <td><?=$value->sumber?></td>
                 <td><?=$value->tanggal_keluar?></td>
+                <td><?=$value->tujuan?></td>
                 <td><?=$value->catatan_keluar?></td>
                 <td><?=$value->status?></td>
 
                 <td>
-                    <a class='btn btn-xs btn-success <?php if ($value->status =='permanen')  {echo 'hidden';}?>' href='<?=base_url('gudang/input_kembali/'.$value->id) ?>'>
+                    <a class='btn btn-xs btn-success <?php if ($value->status =='permanen')  {echo 'hidden';}?>'
+                        href='<?=base_url('gudang/input_kembali/'.$value->id) ?>'>
                         ReInput</a>
                     <a class='btn btn-xs btn-warning hidden <?php if ($this->session->userdata('role_id') != 1 and $this->session->userdata('id_user') != $value->id_author )  {echo 'hidden';}?>'
                         href='<?=base_url('intensity/edit_kunjungan/'.$value->id) ?>'>
                         Edit</a>
-                    <a class='btn btn-xs btn-danger <?php if ($this->session->userdata('role_id') == 2) {echo 'hidden';}?>'
+                    <a class='btn btn-xs btn-danger hidden <?php if ($this->session->userdata('role_id') == 2) {echo 'hidden';}?>'
                         onclick="del('<?=base_url('intensity/delete_kunjungan/'.$value->id) ?>' , '<?=$value->kode?>')">
                         Delete</a>
                 </td>

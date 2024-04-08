@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Gudang extends CI_Controller {
+class Checklist extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -25,6 +25,7 @@ class Gudang extends CI_Controller {
          $this->load->model('m_aloptama');
          $this->load->model('m_metadata');
          $this->load->model('m_gudang');
+         $this->load->model('m_checklist');
          if (
          $this->session->userdata('username') == null
          ) {
@@ -46,11 +47,11 @@ class Gudang extends CI_Controller {
 
 
      //input page barang masuk
-     public function input_page()
+     public function input_page($jenis)
      {
          $data = array(
-             'judul' => 'Input Barang ',
-             'page' => 'gudang/v_input_barang',
+             'judul' => 'Cheklist ',
+             'page' => 'checklist/v_input_'.$jenis,
             //  'aloptama' => $this->m_aloptama->allData($jenis_aloptama)
  
          );
@@ -59,42 +60,37 @@ class Gudang extends CI_Controller {
 
 
     //  input barang
-     public function input()
+     public function input($jenis)
     {
-        $this->form_validation->set_rules('jenis_barang', 'Jenis Barang', 'required', array(
+        $this->form_validation->set_rules('petugas', 'Petugas', 'required', array(
             'required' => '%s Wajib Diisi !'
         ));
-        $this->form_validation->set_rules('jenis_aloptama', 'Jenis Aloptama', 'required', array(
-            'required' => '%s Wajib Diisi !'
-        ));
-        $this->form_validation->set_rules('sumber', 'Sumber', 'required', array(
-            'required' => '%s Wajib Diisi !'
-        ));
+        // $this->form_validation->set_rules('jenis_aloptama', 'Jenis Aloptama', 'required', array(
+        //     'required' => '%s Wajib Diisi !'
+        // ));
+        // $this->form_validation->set_rules('sumber', 'Sumber', 'required', array(
+        //     'required' => '%s Wajib Diisi !'
+        // ));
 
         if ($this->form_validation->run()==FALSE) {
             $data = array(
-                'judul' => 'Input Barang ',
-                'page' => 'gudang/v_input_barang'    
+                'judul' => 'Cheklist ',
+                'page' => 'checklist/v_input_'.$jenis,
+               //  'aloptama' => $this->m_aloptama->allData($jenis_aloptama)
+    
             );
             $this->load->view('v_template',$data,false);
         }else{
             $data = array(
-                'jenis_barang' => $this->input->post('jenis_barang'),
-                'jenis_aloptama' => $this->input->post('jenis_aloptama'),
-                'tanggal_masuk' => $this->input->post('tanggal_masuk'),
-                'merk' => $this->input->post('merk'),
-                'tipe' => $this->input->post('tipe'),
-                'sn' => $this->input->post('sn'),
-                'sumber' => $this->input->post('sumber'),
-                'kondisi' => $this->input->post('kondisi'),
-                'catatan_masuk' => $this->input->post('catatan_masuk')
+                'petugas' => $this->input->post('petugas'),
+                'tanggal' => $this->input->post('tanggal'),
+                'hillman' => $this->input->post('hillman')
              
             );
-            $jenis_barang = $this->input->post('jenis_barang');
 
-            $this->m_gudang->input($data,'tbl_list_barang');
-            $this->session->set_flashdata('pesan', "Data Barang berupa  $jenis_barang berhasil Disimpan !!");
-            redirect('gudang/input_page/');
+            $this->m_checklist->input($data,'tbl_'.$jenis);
+            $this->session->set_flashdata('pesan', "Data checklist $jenis berhasil Disimpan !!");
+            redirect("checklist/input_page/$jenis");
         }
     }
 
@@ -171,6 +167,7 @@ class Gudang extends CI_Controller {
         $this->load->view('v_template',$data,false);
     }
 
+
     //Input Kembali barang yang sudah pernah keluar namun hanya sementara
     public function input_kembali($id_barang){
         $barang = $this->m_gudang->detail_barang_keluar($id_barang);
@@ -189,65 +186,6 @@ class Gudang extends CI_Controller {
         $this->session->set_flashdata('pesan', "Data Barang berupa  $barang->jenis_barang berhasil dimasukan kembali !!");  
         $this->m_gudang->delete('tbl_barang_keluar',$id_barang);
         redirect('gudang/');
-    }
-
-
-
-    //Edit Page Barang
-    public function edit_page_barang($id)
-    {
-        $data = array(
-            'judul' => 'Edit Barang',
-            'page' => 'gudang/v_edit_barang',
-            'barang' => $this->m_gudang->detail_barang($id),
-            'id_barang' => $id
-
-        );
-        $this->load->view('v_template',$data,false);
-    }
-
-
-    //  edit barang
-    public function update($id_barang)
-    {
-        $this->form_validation->set_rules('jenis_barang', 'Jenis Barang', 'required', array(
-            'required' => '%s Wajib Diisi !'
-        ));
-        $this->form_validation->set_rules('jenis_aloptama', 'Jenis Aloptama', 'required', array(
-            'required' => '%s Wajib Diisi !'
-        ));
-        $this->form_validation->set_rules('sumber', 'Sumber', 'required', array(
-            'required' => '%s Wajib Diisi !'
-        ));
-
-        if ($this->form_validation->run()==FALSE) {
-            $data = array(
-                'judul' => 'Edit Barang',
-                'page' => 'gudang/v_edit_barang',
-                'barang' => $this->m_gudang->detail_barang($id_barang),
-                'id_barang' => $id_barang
-    
-            );
-            $this->load->view('v_template',$data,false);
-        }else{
-            $data = array(
-                'jenis_barang' => $this->input->post('jenis_barang'),
-                'jenis_aloptama' => $this->input->post('jenis_aloptama'),
-                'tanggal_masuk' => $this->input->post('tanggal_masuk'),
-                'merk' => $this->input->post('merk'),
-                'tipe' => $this->input->post('tipe'),
-                'sn' => $this->input->post('sn'),
-                'sumber' => $this->input->post('sumber'),
-                'kondisi' => $this->input->post('kondisi'),
-                'catatan_masuk' => $this->input->post('catatan_masuk')
-             
-            );
-            $jenis_barang = $this->input->post('jenis_barang');
-
-            $this->m_gudang->update('tbl_list_barang' , $data , $id_barang);
-            $this->session->set_flashdata('pesan', "Data Barang berupa  $jenis_barang berhasil diupdate !!");
-            redirect('gudang/');
-        }
     }
 
 

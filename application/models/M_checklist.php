@@ -1,7 +1,7 @@
 <?php 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class M_gudang extends CI_Model {
+class M_checklist extends CI_Model {
 
 
     public function input($data,$tabel){
@@ -56,13 +56,7 @@ class M_gudang extends CI_Model {
     //simpan data ke database
    public function input_metadata($data,$tabel){
     $this->db->insert($tabel, $data);
-   }
-
-   //update barang
-   public function update($tabel, $data,$id)
-   {
-      $this->db->where('id', $id);
-      $this->db->update($tabel, $data);
+    
    }
 
 
