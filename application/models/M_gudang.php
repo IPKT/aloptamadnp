@@ -15,6 +15,14 @@ class M_gudang extends CI_Model {
     public function detail_barang($id){
         return $this->db->get_where('tbl_list_barang', array('id' => $id))->row();
     }
+    public function delete($tabel, $id){
+        $this->db->where('id', $id);
+        $this->db->delete($tabel);
+     }
+     public function detail_barang_keluar($id){
+        return $this->db->get_where('tbl_barang_keluar', array('id' => $id))->row();
+    }
+
 
 
 //    

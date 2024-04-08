@@ -12,7 +12,7 @@
             # code...
             echo '<div class="alert alert-success">';
             echo $this->session->flashdata('pesan');
-            echo '  <a class="btn btn-xs btn-success" href="'.base_url('intensity"').'>Lihat Data</a> </div>';
+            echo '  <a class="btn btn-xs btn-success" href="'.base_url('gudang/"').'>Lihat Data</a> </div>';
         }
         
         ?>
@@ -62,7 +62,7 @@
         </div>
         <div class="form-group">
             <label for="">Status</label>
-            <select class="form-control" name="status" id="">
+            <select class="form-control" name="kondisi" id="">
                 <option selected value="Baru">Barang Baru</option>
                 <option value="Bekas">Barang Bekas</option>
             </select>
@@ -77,7 +77,7 @@
         </div>
         <div class="form-group">
             <label for="">Catatan</label>
-            <input class="form-control" name="catatan" id="" placeholder="">
+            <input class="form-control" name="catatan_masuk" id="" placeholder="">
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-primary">Simpan</button>

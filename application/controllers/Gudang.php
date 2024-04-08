@@ -86,8 +86,8 @@ class Gudang extends CI_Controller {
                 'tipe' => $this->input->post('tipe'),
                 'sn' => $this->input->post('sn'),
                 'sumber' => $this->input->post('sumber'),
-                'status' => $this->input->post('status'),
-                'catatan' => $this->input->post('catatan')
+                'kondisi' => $this->input->post('kondisi'),
+                'catatan_masuk' => $this->input->post('catatan_masuk')
              
             );
             $jenis_barang = $this->input->post('jenis_barang');
@@ -102,7 +102,7 @@ class Gudang extends CI_Controller {
     public function verifikasi_keluar($id)
     {
         $data = array(
-            'judul' => 'Verifikasi Barang yang akan dikeluarkan ',
+            'judul' => 'Verifikasi Barang Keluar ',
             'page' => 'gudang/v_verifikasi_keluar',
             'barang' => $this->m_gudang->detail_barang($id),
             'id_barang' => $id
@@ -110,6 +110,88 @@ class Gudang extends CI_Controller {
         );
         $this->load->view('v_template',$data,false);
     }
+
+        //  keluarkan barang
+        public function keluar($id_barang)
+        {
+            $this->form_validation->set_rules('tanggal_keluar', 'Tanggal Keluar', 'required', array(
+                'required' => '%s Wajib Diisi !'
+            ));
+            $this->form_validation->set_rules('tujuan', 'Tujuan', 'required', array(
+                'required' => '%s Wajib Diisi !'
+            ));
+            $this->form_validation->set_rules('catatan_keluar', 'Catatan', 'required', array(
+                'required' => '%s Wajib Diisi !'
+            ));
+    
+            if ($this->form_validation->run()==FALSE) {
+                $data = array(
+                    'judul' => 'Verifikasi Barang Keluar ',
+                    'page' => 'gudang/v_verifikasi_keluar',
+                    'barang' => $this->m_gudang->detail_barang($id_barang),
+                    'id_barang' => $id_barang
+        
+                );
+                $this->load->view('v_template',$data,false);
+            }else{
+                $barang = $this->m_gudang->detail_barang($id_barang);
+                $data = array(
+                    'jenis_barang' => $barang->jenis_barang,
+                    'jenis_aloptama' => $barang->jenis_aloptama,
+                    'tanggal_masuk' => $barang->tanggal_masuk,
+                    'merk' => $barang->merk,
+                    'tipe' => $barang->tipe,
+                    'sn' => $barang->sn,
+                    'sumber' => $barang->sumber,
+                    'kondisi' => $barang->kondisi,
+                    'catatan_masuk' => $barang->catatan_masuk,
+                    'tujuan' => $this->input->post('tujuan'),
+                    'tanggal_keluar' => $this->input->post('tanggal_keluar'),
+                    'catatan_keluar' => $this->input->post('catatan_keluar'),
+                    'status' => $this->input->post('status'),
+                 
+                );
+    
+                $this->m_gudang->input($data,'tbl_barang_keluar');
+                $this->session->set_flashdata('pesan', "Data Barang berupa  $barang->jenis_barang berhasil dikeluarkan !!");
+                $this->m_gudang->delete('tbl_list_barang',$id_barang);
+            
+                redirect('gudang/');
+            }
+        }
+
+    //Page Barang Keluar
+    public function barang_keluar()
+    {
+        $data = array(
+            'judul' => 'Gudang Peralatan Stageof Denpasar',
+            'page' => 'gudang/v_list_barang_keluar',
+            'list_barang' =>$this->m_gudang->allData('tbl_barang_keluar', 'jenis_barang')
+        );
+        $this->load->view('v_template',$data,false);
+    }
+
+
+    //Input Kembali barang yang sudah pernah keluar namun hanya sementara
+    public function input_kembali($id_barang){
+        $barang = $this->m_gudang->detail_barang_keluar($id_barang);
+        $data = array(
+            'jenis_barang' => $barang->jenis_barang,
+            'jenis_aloptama' => $barang->jenis_aloptama,
+            'tanggal_masuk' => $barang->tanggal_masuk,
+            'merk' => $barang->merk,
+            'tipe' => $barang->tipe,
+            'sn' => $barang->sn,
+            'sumber' => $barang->sumber,
+            'kondisi' => $barang->kondisi,
+            'catatan_masuk' => $barang->catatan_masuk,
+        );
+        $this->m_gudang->input($data,'tbl_list_barang');
+        $this->session->set_flashdata('pesan', "Data Barang berupa  $barang->jenis_barang berhasil dimasukan kembali !!");  
+        $this->m_gudang->delete('tbl_barang_keluar',$id_barang);
+        redirect('gudang/');
+    }
+
 
 
 

@@ -473,6 +473,9 @@ font-size: 16px;">
                                 <a href="<?=base_url('gudang/input')?>">Input  Barang</a>
                             </li>
                             <li>
+                                <a href="<?=base_url('gudang/barang_keluar')?>">Barang Keluar</a>
+                            </li>
+                            <li>
                                 <a href="<?=base_url('int_reis/input_page_kunjungan')?>">Input Kunjungan
                                     Intensity Reis</a>
                             </li>

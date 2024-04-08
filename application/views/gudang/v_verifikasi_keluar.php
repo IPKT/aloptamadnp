@@ -1,19 +1,4 @@
 <div class="row">
-    <?php 
-        //notifikasi pesan validasi
-        echo validation_errors('<div class="alert alert-danger">','</div>');
-        
-        //notifikasi pesan data berhasil disimpan
-        if ($this->session->flashdata('pesan')) {
-            # code...
-            echo '<div class="alert alert-success">';
-            echo $this->session->flashdata('pesan');
-            echo '  <a class="btn btn-xs btn-success" href="'.base_url('intensity"').'>Lihat Data</a> </div>';
-        }
-        
-        ?>
-</div>
-<div class="row">
 
     <div class="col-sm-8">
         <h3>Detail Barang</h3>
@@ -52,13 +37,13 @@
                 <tr>
                     <td>Status</td>
                     <td>:</td>
-                    <td><?=$barang->status?></td>
+                    <td><?=$barang->kondisi?></td>
                 </tr>
 
             </tbody>
         </table>
 
-        <h3>Form Barang Keluar</h3>
+     
         <?php echo form_open_multipart("gudang/keluar/$id_barang")?>
 
         <div class="form-group">
@@ -66,8 +51,20 @@
             <input class="form-control" type="date" name="tanggal_keluar">
         </div>
         <div class="form-group">
-            <label for="">Tujuan</label>
-            <input class="form-control" name="tujuan" id="" placeholder="">
+            <label for="">Status Keluar</label>
+            <select class="form-control" name="status" id="">
+                <option selected value="permanen">Dikeluarkan Permanen (dipasang di site atau dihapus)</option>
+                <option value="sementara">Dikeluarkan Sementara</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="">Tujuan (Nama Site atau Stasiun)</label>
+            <input class="form-control" name="tujuan" id="" placeholder="jika dilelang maka tulis 'dilelang'">
+        </div>
+
+        <div class="form-group">
+            <label for="">Catatan</label>
+            <input class="form-control" name="catatan_keluar" id="" placeholder="">
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-primary">Simpan</button>

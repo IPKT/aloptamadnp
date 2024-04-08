@@ -23,8 +23,9 @@
                 <th>SN</th>
                 <th>Kondisi</th>
                 <th>Sumber</th>
-                <th>Tanggal Masuk</th>
+                <th>Tanggal Keluar</th>
                 <th>Catatan</th>
+                <th>Status</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -39,15 +40,15 @@
                 <td><?=$value->sn?></td>
                 <td><?=$value->kondisi?></td>
                 <td><?=$value->sumber?></td>
-                <td><?=$value->tanggal_masuk?></td>
-                <td><?=$value->catatan_masuk?></td>
-
+                <td><?=$value->tanggal_keluar?></td>
+                <td><?=$value->catatan_keluar?></td>
+                <td><?=$value->status?></td>
 
                 <td>
-                    <a class='btn btn-xs btn-danger' href='<?=base_url('gudang/verifikasi_keluar/'.$value->id) ?>'>
-                        Keluar</a>
-                    <a class='btn btn-xs btn-warning <?php if ($this->session->userdata('role_id') != 1 and $this->session->userdata('id_user') != $value->id_author )  {echo 'hidden';}?>'
-                        href='<?=base_url('gudang/edit_barang/'.$value->id) ?>'>
+                    <a class='btn btn-xs btn-success <?php if ($value->status =='permanen')  {echo 'hidden';}?>' href='<?=base_url('gudang/input_kembali/'.$value->id) ?>'>
+                        ReInput</a>
+                    <a class='btn btn-xs btn-warning hidden <?php if ($this->session->userdata('role_id') != 1 and $this->session->userdata('id_user') != $value->id_author )  {echo 'hidden';}?>'
+                        href='<?=base_url('intensity/edit_kunjungan/'.$value->id) ?>'>
                         Edit</a>
                     <a class='btn btn-xs btn-danger <?php if ($this->session->userdata('role_id') == 2) {echo 'hidden';}?>'
                         onclick="del('<?=base_url('intensity/delete_kunjungan/'.$value->id) ?>' , '<?=$value->kode?>')">
