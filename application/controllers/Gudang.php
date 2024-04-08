@@ -39,11 +39,14 @@ class Gudang extends CI_Controller {
          $data = array(
              'judul' => 'Gudang Peralatan Stageof Denpasar',
              'page' => 'gudang/v_list_barang',
+             'list_barang' =>$this->m_gudang->allData('tbl_list_barang', 'jenis_barang')
          );
          $this->load->view('v_template',$data,false);
      }
 
-     public function input_page_barang()
+
+     //input page barang masuk
+     public function input_page()
      {
          $data = array(
              'judul' => 'Input Barang ',
@@ -55,134 +58,62 @@ class Gudang extends CI_Controller {
      }
 
 
-
-
-
-
-
-
-
-
-
-
-     public function aloptama($jenis_aloptama)
-     {
-         $data = array(
-             'judul' => 'Pemetaan Lokasi '.$jenis_aloptama,
-             'page' => 'metadata/v_aloptama',
-             'jenis_aloptama' => $jenis_aloptama,
-             'aloptama' => $this->m_aloptama->allData($jenis_aloptama),
-         );
-         $this->load->view('v_template',$data,false);
-     }
-
-    //  public function detail_metadata1($jenis_aloptama, $id_aloptama)
-    //  {
-    //      $data = array(
-    //          'judul' => 'Detail Metadata '.$jenis_aloptama,
-    //          'page' => 'metadata/v_detail_metadata',
-    //          'jenis_aloptama' => $jenis_aloptama,
-    //          'hardware' => $this->m_metadata->detail_metadata($jenis_aloptama, $id_aloptama),
-    //      );
-    //      $this->load->view('v_template',$data,false);
-    //  }
-
-
-    //  public function detail_metadata2($jenis_aloptama, $id_aloptama)
-    //  {
-    //      $data = array(
-    //          'judul' => 'Detail Metadata '.$jenis_aloptama,
-    //          'page' => 'metadata/v_detail_metadata2',
-    //          'jenis_aloptama' => $jenis_aloptama,
-    //          'hardware' => $this->m_metadata->detail_metadata($jenis_aloptama, $id_aloptama),
-    //          'jenis_hardware' => $this->m_metadata->jenis_hardware_yang_ada(),
-    //          'id_aloptama' => $id_aloptama
-    //      );
-    //      $this->load->view('v_template',$data,false);
-    //  }
-
-    //  public function detail_metadata3($jenis_aloptama, $id_aloptama)
-    //  {
-    //      $data = array(
-    //          'judul' => 'Detail Metadata '.$jenis_aloptama,
-    //          'page' => 'metadata/v_detail_metadata3',
-    //          'jenis_aloptama' => $jenis_aloptama,
-    //          'hardware' => $this->m_metadata->detail_metadata($jenis_aloptama, $id_aloptama),
-    //          'jenis_hardware' => $this->m_metadata->jenis_hardware_yang_ada(),
-    //          'id_aloptama' => $id_aloptama
-    //      );
-    //      $this->load->view('v_template',$data,false);
-    //  }
-
-    //  public function detail_metadata($jenis_aloptama, $id_aloptama)
-    //  {
-    //      $data = array(
-    //          'judul' => 'Detail Metadata '.$jenis_aloptama,
-    //          'page' => 'metadata/v_detail_metadata',
-    //          'jenis_aloptama' => $jenis_aloptama,
-    //          'hardware' => $this->m_metadata->detail_metadata($jenis_aloptama, $id_aloptama),
-    //          'jenis_hardware' => $this->m_metadata->jenis_hardware_yang_ada(),
-    //          'id_aloptama' => $id_aloptama
-    //      );
-    //      $this->load->view('v_template',$data,false);
-    //  }
-
-     public function input_page($jenis_aloptama)
-     {
-         $data = array(
-             'judul' => 'Input Metadata Hardware '.$jenis_aloptama,
-             'page' => 'metadata/v_input_metadata',
-             'jenis_aloptama' => $jenis_aloptama,
-             'aloptama' => $this->m_aloptama->allData($jenis_aloptama)
- 
-         );
-         $this->load->view('v_template',$data,false);
-     }
-
-    //  input metadata hardware
-     public function input($jenis_aloptama)
+    //  input barang
+     public function input()
     {
-        $this->form_validation->set_rules('jenis_hardware', 'Jenis Hardware', 'required', array(
+        $this->form_validation->set_rules('jenis_barang', 'Jenis Barang', 'required', array(
             'required' => '%s Wajib Diisi !'
         ));
-        $this->form_validation->set_rules('merk', 'Merk', 'required', array(
+        $this->form_validation->set_rules('jenis_aloptama', 'Jenis Aloptama', 'required', array(
             'required' => '%s Wajib Diisi !'
         ));
-        $this->form_validation->set_rules('tipe', 'Tipe', 'required', array(
+        $this->form_validation->set_rules('sumber', 'Sumber', 'required', array(
             'required' => '%s Wajib Diisi !'
         ));
-      
-        // $this->form_validation->set_rules('tanggal_pemasangan', 'Tanggal Pemasangan', 'required', array(
-        //     'required' => '%s Wajib Diisi !'
-        // ));
-
 
         if ($this->form_validation->run()==FALSE) {
             $data = array(
-                'judul' => 'Input Metadata Hardware'.$jenis_aloptama,
-                'page' => 'metadata/v_input_metadata',
-                'jenis_aloptama' => $jenis_aloptama,
-                'aloptama' => $this->m_aloptama->allData($jenis_aloptama)
+                'judul' => 'Input Barang ',
+                'page' => 'gudang/v_input_barang'    
             );
             $this->load->view('v_template',$data,false);
         }else{
             $data = array(
-                'id_aloptama' => $this->input->post('id_aloptama'),
-                'jenis_aloptama' => $jenis_aloptama,
-                'jenis_hardware' => $this->input->post('jenis_hardware'),
+                'jenis_barang' => $this->input->post('jenis_barang'),
+                'jenis_aloptama' => $this->input->post('jenis_aloptama'),
+                'tanggal_masuk' => $this->input->post('tanggal_masuk'),
                 'merk' => $this->input->post('merk'),
                 'tipe' => $this->input->post('tipe'),
                 'sn' => $this->input->post('sn'),
-                'tanggal_pemasangan' => $this->input->post('tanggal_pemasangan'),
-                'sumber' => $this->input->post('sumber')
+                'sumber' => $this->input->post('sumber'),
+                'status' => $this->input->post('status'),
+                'catatan' => $this->input->post('catatan')
              
             );
+            $jenis_barang = $this->input->post('jenis_barang');
 
-            $this->m_metadata->input_metadata($data,'hardware_aloptama');
-            $this->session->set_flashdata('pesan', "Data Hardware $jenis_aloptama berhasil Disimpan !!");
-            redirect('metadata/input_page/'.$jenis_aloptama);
+            $this->m_gudang->input($data,'tbl_list_barang');
+            $this->session->set_flashdata('pesan', "Data Barang berupa  $jenis_barang berhasil Disimpan !!");
+            redirect('gudang/input_page/');
         }
     }
+
+    //verifikasi keluarkan barang
+    public function verifikasi_keluar($id)
+    {
+        $data = array(
+            'judul' => 'Verifikasi Barang yang akan dikeluarkan ',
+            'page' => 'gudang/v_verifikasi_keluar',
+            'barang' => $this->m_gudang->detail_barang($id),
+            'id_barang' => $id
+
+        );
+        $this->load->view('v_template',$data,false);
+    }
+
+
+
+
 
     public function intensity()
      {

@@ -2,6 +2,27 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class M_gudang extends CI_Model {
+
+
+    public function input($data,$tabel){
+        $this->db->insert($tabel, $data);
+    }
+    public function allData($tabel,$orderby){
+        $this->db->select('*');
+        $this->db->from($tabel)->order_by($orderby, 'ASC');
+        return $this->db->get()->result();
+        }
+    public function detail_barang($id){
+        return $this->db->get_where('tbl_list_barang', array('id' => $id))->row();
+    }
+
+
+//    
+// 
+// 
+
+
+
     public function detail_aloptama($jenis_aloptama, $id)  
     {
        return $this->db->get_where('tbl_'.$jenis_aloptama, array('id' => $id))->row();

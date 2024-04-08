@@ -1,9 +1,5 @@
 <div class="row">
-    <!-- <div class="col-sm-8">
-        <div id="map" style="width: 100%; height: 600px;"></div>
-    </div> -->
-    <div class="col-sm-12">
-        <?php 
+    <?php 
         //notifikasi pesan validasi
         echo validation_errors('<div class="alert alert-danger">','</div>');
         
@@ -16,68 +12,62 @@
         }
         
         ?>
-        <?php echo form_open_multipart("gudang/input/")?>
+</div>
+<div class="row">
+
+    <div class="col-sm-8">
+        <h3>Detail Barang</h3>
+        <table class="table table-striped table-hover">
+            <tbody>
+                <tr>
+                    <td>Jenis Barang</td>
+                    <td>:</td>
+                    <td><?=$barang->jenis_barang?></td>
+                </tr>
+                <tr>
+                    <td>Merk</td>
+                    <td>:</td>
+                    <td><?=$barang->merk?></td>
+                </tr>
+                <tr>
+                    <td>Tipe</td>
+                    <td>:</td>
+                    <td><?=$barang->tipe?></td>
+                </tr>
+                <tr>
+                    <td>Serial Number</td>
+                    <td>:</td>
+                    <td><?=$barang->sn?></td>
+                </tr>
+                <tr>
+                    <td>Tanggal Masuk</td>
+                    <td>:</td>
+                    <td><?=$barang->tanggal_masuk?></td>
+                </tr>
+                <tr>
+                    <td>Sumber</td>
+                    <td>:</td>
+                    <td><?=$barang->sumber?></td>
+                </tr>
+                <tr>
+                    <td>Status</td>
+                    <td>:</td>
+                    <td><?=$barang->status?></td>
+                </tr>
+
+            </tbody>
+        </table>
+
+        <h3>Form Barang Keluar</h3>
+        <?php echo form_open_multipart("gudang/keluar/$id_barang")?>
 
         <div class="form-group">
-            <label for="">Jenis Barang</label>
-            <select class="form-control" name="jenis_barang" id="">
-                <option disabled selected value="">Pilih Jenis Hardware</option>
-                <option value="Modem GSM">Modem GSM</option>
-                <option value="Sensor">Sensor</option>
-                <option value="Cube">Cube</option>
-                <option value="Stabilizer">Stabilizer</option>
-                <option value="UPS">UPS</option>
-                <option value="Hub Switch">Hub Switch</option>
-                <option value="Terminal Arrester">Terminal Arrester</option>
-                <option value="Adaptor Cube">Adaptor Cube</option>
-            </select>
+            <label for="">Tanggal Keluar</label>
+            <input class="form-control" type="date" name="tanggal_keluar">
         </div>
         <div class="form-group">
-            <label for="">Jenis Aloptama</label>
-            <select class="form-control" name="jenis_aloptama" id="">
-                <option disabled selected value="">Pilih Jenis Aloptama</option>
-                <option value="Intensity Realshake">Intensity Realshake</option>
-                <option value="Intensity Reis">Intensity Reis</option>
-                <option value="WRS">WRS</option>
-                <option value="Seismo">Seismo</option>
-                <option value="Accelero">Accelero</option>
-                <option value="Operasional">Operasional</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="">Merk</label>
-            <input class="form-control" name="merk" id="" placeholder="" required>
-        </div>
-        <div class="form-group">
-            <label for="">Tipe</label>
-            <input class="form-control" name="tipe" id="" placeholder="" required>
-        </div>
-        <div class="form-group">
-            <label for="">Serial Number</label>
-            <input class="form-control" name="sn" id="" placeholder="">
-        </div>
-        <div class="form-group">
-            <label for="">Tanggal Perolehan</label>
-            <input class="form-control" type="date" name="tanggal_masuk">
-        </div>
-        <div class="form-group">
-            <label for="">Status</label>
-            <select class="form-control" name="status" id="">
-                <option selected value="Baru">Barang Baru</option>
-                <option value="Bekas">Barang Bekas</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="">Sumber Pengadaan</label>
-            <select class="form-control" name="sumber" id="">
-                <option selected value="Stageof Denpasar">Stageof Denpasar</option>
-                <option value="PSGT">PSGT</option>
-                <option value="Pusinskal">Pusinskal</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="">Catatan</label>
-            <input class="form-control" name="catatan" id="" placeholder="">
+            <label for="">Tujuan</label>
+            <input class="form-control" name="tujuan" id="" placeholder="">
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-primary">Simpan</button>
@@ -87,6 +77,7 @@
 
 
     </div>
+
 
 </div>
 

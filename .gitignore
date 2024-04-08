@@ -33,3 +33,7 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 
 ## file gambar dan laporan
 kunjungan_*/*
+
+## abaikan file config
+application/config/config.php
+application/config/database.php
