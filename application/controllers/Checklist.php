@@ -26,11 +26,11 @@ class Checklist extends CI_Controller {
          $this->load->model('m_metadata');
          $this->load->model('m_gudang');
          $this->load->model('m_checklist');
-         if (
-         $this->session->userdata('username') == null
-         ) {
-            redirect('auth');
-         }
+        //  if (
+        //  $this->session->userdata('username') == null
+        //  ) {
+        //     redirect('auth');
+        //  }
          
      }
 
@@ -38,9 +38,9 @@ class Checklist extends CI_Controller {
      public function index()
      {
          $data = array(
-             'judul' => 'Gudang Peralatan Stageof Denpasar',
-             'page' => 'gudang/v_list_barang',
-             'list_barang' =>$this->m_gudang->allData('tbl_list_barang', 'jenis_barang')
+             'judul' => 'Kondisi Terbaru Peralatan',
+             'page' => 'checklist/v_kondisi_peralatan',
+             'taman_alat' =>$this->m_checklist->dataTerbaru('tbl_taman_alat')
          );
          $this->load->view('v_template',$data,false);
      }
@@ -48,9 +48,9 @@ class Checklist extends CI_Controller {
 
      //input page barang masuk
      public function input_page($jenis)
-     {
+     {  
          $data = array(
-             'judul' => 'Cheklist ',
+             'judul' => 'Cheklist '.ucwords(str_replace("_"," ",$jenis)),
              'page' => 'checklist/v_input_'.$jenis,
             //  'aloptama' => $this->m_aloptama->allData($jenis_aloptama)
  
@@ -65,16 +65,16 @@ class Checklist extends CI_Controller {
         $this->form_validation->set_rules('petugas', 'Petugas', 'required', array(
             'required' => '%s Wajib Diisi !'
         ));
-        // $this->form_validation->set_rules('jenis_aloptama', 'Jenis Aloptama', 'required', array(
-        //     'required' => '%s Wajib Diisi !'
-        // ));
-        // $this->form_validation->set_rules('sumber', 'Sumber', 'required', array(
-        //     'required' => '%s Wajib Diisi !'
-        // ));
+        $this->form_validation->set_rules('tanggal', 'Tanggal', 'required', array(
+            'required' => '%s Wajib Diisi !'
+        ));
+        $this->form_validation->set_rules('shift', 'Shift', 'required', array(
+            'required' => '%s Wajib Diisi !'
+        ));
 
         if ($this->form_validation->run()==FALSE) {
             $data = array(
-                'judul' => 'Cheklist ',
+                'judul' => 'Cheklist '.ucwords(str_replace("_"," ",$jenis)),
                 'page' => 'checklist/v_input_'.$jenis,
                //  'aloptama' => $this->m_aloptama->allData($jenis_aloptama)
     
@@ -84,7 +84,14 @@ class Checklist extends CI_Controller {
             $data = array(
                 'petugas' => $this->input->post('petugas'),
                 'tanggal' => $this->input->post('tanggal'),
-                'hillman' => $this->input->post('hillman')
+                'shift' => $this->input->post('shift'),
+                'sangkar_meteo' => $this->input->post('sangkar_meteo'),
+                'anemometer' => $this->input->post('anemometer'),
+                'panci_penguapan' => $this->input->post('panci_penguapan'),
+                'campbell' => $this->input->post('campbell'),
+                'penakar_hujan' => $this->input->post('penakar_hujan'),
+                'hillman' => $this->input->post('hillman'),
+                'catatan' => $this->input->post('catatan'),
              
             );
 
@@ -93,142 +100,5 @@ class Checklist extends CI_Controller {
             redirect("checklist/input_page/$jenis");
         }
     }
-
-    //verifikasi keluarkan barang
-    public function verifikasi_keluar($id)
-    {
-        $data = array(
-            'judul' => 'Verifikasi Barang Keluar ',
-            'page' => 'gudang/v_verifikasi_keluar',
-            'barang' => $this->m_gudang->detail_barang($id),
-            'id_barang' => $id
-
-        );
-        $this->load->view('v_template',$data,false);
-    }
-
-        //  keluarkan barang
-        public function keluar($id_barang)
-        {
-            $this->form_validation->set_rules('tanggal_keluar', 'Tanggal Keluar', 'required', array(
-                'required' => '%s Wajib Diisi !'
-            ));
-            $this->form_validation->set_rules('tujuan', 'Tujuan', 'required', array(
-                'required' => '%s Wajib Diisi !'
-            ));
-            $this->form_validation->set_rules('catatan_keluar', 'Catatan', 'required', array(
-                'required' => '%s Wajib Diisi !'
-            ));
     
-            if ($this->form_validation->run()==FALSE) {
-                $data = array(
-                    'judul' => 'Verifikasi Barang Keluar ',
-                    'page' => 'gudang/v_verifikasi_keluar',
-                    'barang' => $this->m_gudang->detail_barang($id_barang),
-                    'id_barang' => $id_barang
-        
-                );
-                $this->load->view('v_template',$data,false);
-            }else{
-                $barang = $this->m_gudang->detail_barang($id_barang);
-                $data = array(
-                    'jenis_barang' => $barang->jenis_barang,
-                    'jenis_aloptama' => $barang->jenis_aloptama,
-                    'tanggal_masuk' => $barang->tanggal_masuk,
-                    'merk' => $barang->merk,
-                    'tipe' => $barang->tipe,
-                    'sn' => $barang->sn,
-                    'sumber' => $barang->sumber,
-                    'kondisi' => $barang->kondisi,
-                    'catatan_masuk' => $barang->catatan_masuk,
-                    'tujuan' => $this->input->post('tujuan'),
-                    'tanggal_keluar' => $this->input->post('tanggal_keluar'),
-                    'catatan_keluar' => $this->input->post('catatan_keluar'),
-                    'status' => $this->input->post('status'),
-                 
-                );
-    
-                $this->m_gudang->input($data,'tbl_barang_keluar');
-                $this->session->set_flashdata('pesan', "Data Barang berupa  $barang->jenis_barang berhasil dikeluarkan !!");
-                $this->m_gudang->delete('tbl_list_barang',$id_barang);
-            
-                redirect('gudang/');
-            }
-        }
-
-    //Page Barang Keluar
-    public function barang_keluar()
-    {
-        $data = array(
-            'judul' => 'Gudang Peralatan Stageof Denpasar',
-            'page' => 'gudang/v_list_barang_keluar',
-            'list_barang' =>$this->m_gudang->allData('tbl_barang_keluar', 'jenis_barang')
-        );
-        $this->load->view('v_template',$data,false);
-    }
-
-
-    //Input Kembali barang yang sudah pernah keluar namun hanya sementara
-    public function input_kembali($id_barang){
-        $barang = $this->m_gudang->detail_barang_keluar($id_barang);
-        $data = array(
-            'jenis_barang' => $barang->jenis_barang,
-            'jenis_aloptama' => $barang->jenis_aloptama,
-            'tanggal_masuk' => $barang->tanggal_masuk,
-            'merk' => $barang->merk,
-            'tipe' => $barang->tipe,
-            'sn' => $barang->sn,
-            'sumber' => $barang->sumber,
-            'kondisi' => $barang->kondisi,
-            'catatan_masuk' => $barang->catatan_masuk,
-        );
-        $this->m_gudang->input($data,'tbl_list_barang');
-        $this->session->set_flashdata('pesan', "Data Barang berupa  $barang->jenis_barang berhasil dimasukan kembali !!");  
-        $this->m_gudang->delete('tbl_barang_keluar',$id_barang);
-        redirect('gudang/');
-    }
-
-
-
-
-
-
-    public function intensity()
-     {
-         $data = array(
-             'judul' => 'Metadata Hardware Intensity',
-             'page' => 'metadata/v_metadata',
-             'jenis_aloptama' => 'intensity',
-            //  'jenis_hardware' => $this->m_metadata->jenis_hardware_yang_ada(),
-            //  'id_aloptama' => $id_aloptama
-         );
-         $this->load->view('v_template',$data,false);
-     }
-
-     public function seismo()
-     {
-         $data = array(
-             'judul' => 'Metadata Hardware Seismo',
-             'page' => 'metadata/v_metadata',
-             'jenis_aloptama' => 'seismo',
-            //  'jenis_hardware' => $this->m_metadata->jenis_hardware_yang_ada(),
-            //  'id_aloptama' => $id_aloptama
-         );
-         $this->load->view('v_template',$data,false);
-     }
-
-          public function detail_metadata($jenis_aloptama, $id_aloptama, $kode)
-     {
-         $data = array(
-             'judul' => 'Detail Metadata '.$jenis_aloptama.' '.$kode,
-             'page' => 'metadata/v_detail_metadata',
-             'jenis_aloptama' => $jenis_aloptama,
-             'hardware' => $this->m_metadata->detail_metadata($jenis_aloptama, $id_aloptama),
-             'jenis_hardware' => $this->m_metadata->jenis_hardware_yang_ada(),
-             'kode' => $kode
-         );
-         $this->load->view('v_template',$data,false);
-     }
-
-
 }

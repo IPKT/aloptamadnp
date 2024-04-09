@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-sm-6">
+    <div class="col-sm-12">
         <?php 
         //notifikasi pesan validasi
         echo validation_errors('<div class="alert alert-danger">','</div>');
@@ -16,25 +16,95 @@
         <?php echo form_open_multipart("checklist/input/taman_alat")?>
 
         <div class="form-group">
-            <label for="">Petugas</label>
-            <input class="form-control" name="petugas" id="" placeholder="">
+            <label for="" onclick="hideStyle('petugas')">Petugas</label>
+            <select class="form-control" id="petugas" name="petugas" onchange="toggleInput('petugas')" style="display: block;">
+                <option disabled selected value="">Pilih Petugas</option>
+                <option value="Putu Martin Winajun Pratama">Martin</option>
+                <option value="I Putu Kembar Tirtayasa">Putu Kembar</option>
+                <option value="Arindea Anggraini S">Arindea</option>
+                <option value="lainnya">Lainnya</option>
+            </select>
+            <input name="petugas_lainnya" class="form-control" type="text" id="petugas_lainnya" style="display: none;"
+                placeholder="Masukkan opsi lainnya">
         </div>
         <div class="form-group">
             <label for="">Tanggal</label>
             <input class="form-control" type="date" name="tanggal">
         </div>
         <div class="form-group">
-            <label for="">Hillman</label>
+            <label for="">Waktu</label>
+            <input class="form-control" type="time" name="shift">
+        </div>
+        <div class="form-group">
+            <label for="" onclick="hideStyle('sangkar_meteo')" >Sangkar Meteo</label>
+            <select class="form-control" id="sangkar_meteo" name="sangkar_meteo" onchange="toggleInput('sangkar_meteo')" style="display: block;">
+                <option value="baik">Baik</option>
+                <option value="buruk">Buruk</option>
+                <option value="lainnya">Lainnya</option>
+            </select>
+            <input name="sangkar_meteo_lainnya" class="form-control" type="text" id="sangkar_meteo_lainnya" style="display: none;"
+                placeholder="Masukkan opsi lainnya">
+        </div>
+        <div class="form-group">
+            <label for="" onclick="hideStyle('anemometer')">Anemometer</label>
+            <select class="form-control" id="anemometer" name="anemometer" onchange="toggleInput('anemometer')">
+                <option value="baik">Baik</option>
+                <option value="buruk">Buruk</option>
+                <option value="lainnya">Lainnya</option>
+            </select>
+            <input name="anemometer_lainnya" class="form-control" type="text" id="anemometer_lainnya" style="display: none;"
+                placeholder="Masukkan opsi lainnya">
+        </div>
+       
+        <div class="form-group">
+            <label for="" onclick="hideStyle('panci_penguapan')">Panci Penguapan</label>
+            <select class="form-control" id="panci_penguapan" name="panci_penguapan" onchange="toggleInput('panci_penguapan')">
+                <option value="baik">Baik</option>
+                <option value="buruk">Buruk</option>
+                <option value="lainnya">Lainnya</option>
+            </select>
+            <input name="panci_penguapan_lainnya" class="form-control" type="text" id="panci_penguapan_lainnya" style="display: none;"
+                placeholder="Masukkan opsi lainnya">
+        </div>
+      
+        <div class="form-group">
+            <label for="" onclick="hideStyle('campbell')">Campbell Stoke</label>
+            <select class="form-control" id="campbell" name="campbell" onchange="toggleInput('campbell')">
+                <option value="baik">Baik</option>
+                <option value="buruk">Buruk</option>
+                <option value="lainnya">Lainnya</option>
+            </select>
+            <input name="campbell_lainnya" class="form-control" type="text" id="campbell_lainnya" style="display: none;"
+                placeholder="Masukkan opsi lainnya">
+        </div>
+        
+        <div class="form-group">
+            <label for="" onclick="hideStyle('penakar_hujan')">Penakar Hujan Manual</label>
+            <select class="form-control" id="penakar_hujan" name="penakar_hujan" onchange="toggleInput('penakar_hujan')">
+                <option value="baik">Baik</option>
+                <option value="buruk">Buruk</option>
+                <option value="lainnya">Lainnya</option>
+            </select>
+            <input name="penakar_hujan_lainnya" class="form-control" type="text" id="penakar_hujan_lainnya" style="display: none;"
+                placeholder="Masukkan opsi lainnya">
+        </div>
+        <div class="form-group">
+            <label for="" onclick="hideStyle('hillman')">Hillman</label>
             <select class="form-control" id="hillman" name="hillman" onchange="toggleInput('hillman')">
                 <option value="baik">Baik</option>
                 <option value="buruk">Buruk</option>
                 <option value="lainnya">Lainnya</option>
             </select>
-        </div>
-        <div class="form-group">
             <input name="hillman_lainnya" class="form-control" type="text" id="hillman_lainnya" style="display: none;"
                 placeholder="Masukkan opsi lainnya">
         </div>
+       
+        <div class="form-group">
+            <label for="">Catatan</label>
+            <textarea class="form-control textAreaMultiline" name="catatan" rows="3"
+                placeholder="1. \n2. "></textarea>
+        </div>
+    
 
         <div class="form-group">
             <button type="submit" class="btn btn-primary">Simpan</button>
@@ -66,9 +136,20 @@ function toggleInput(jenis) {
     if (selectedValue === "lainnya") {
         lainnyaInput.style.display = "block";
         lainnyaInput.name = jenis;
+        selectBox.style.display = "none";
     } else {
         lainnyaInput.style.display = "none";
         lainnyaInput.name = id_lainnya;
     }
+}
+
+function hideStyle(jenis){
+    var selectBox = document.getElementById(jenis);
+    selectBox.style.display = "block";
+    selectBox.selectedIndex = 0;
+    var id_lainnya = jenis + "_lainnya";
+    var lainnyaInput = document.getElementById(id_lainnya);
+    lainnyaInput.style.display = "none";
+    lainnyaInput.name = id_lainnya;
 }
 </script>

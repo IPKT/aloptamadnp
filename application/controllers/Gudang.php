@@ -120,9 +120,9 @@ class Gudang extends CI_Controller {
             $this->form_validation->set_rules('tujuan', 'Tujuan', 'required', array(
                 'required' => '%s Wajib Diisi !'
             ));
-            $this->form_validation->set_rules('catatan_keluar', 'Catatan', 'required', array(
-                'required' => '%s Wajib Diisi !'
-            ));
+            // $this->form_validation->set_rules('catatan_keluar', 'Catatan', 'required', array(
+            //     'required' => '%s Wajib Diisi !'
+            // ));
     
             if ($this->form_validation->run()==FALSE) {
                 $data = array(
@@ -164,7 +164,7 @@ class Gudang extends CI_Controller {
     public function barang_keluar()
     {
         $data = array(
-            'judul' => 'Gudang Peralatan Stageof Denpasar',
+            'judul' => 'List Barang Keluar',
             'page' => 'gudang/v_list_barang_keluar',
             'list_barang' =>$this->m_gudang->allData('tbl_barang_keluar', 'jenis_barang')
         );
