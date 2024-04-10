@@ -32,7 +32,7 @@ class Auth extends CI_Controller {
                 $this->_login();
             }
         } else {
-            redirect('lokasi');
+            redirect('aloptama');
         }
        
 	}
@@ -57,7 +57,7 @@ class Auth extends CI_Controller {
                 ];
                 $this->session->set_userdata($data);
                 
-                redirect('lokasi');
+                redirect('aloptama');
                 
 
             } else {

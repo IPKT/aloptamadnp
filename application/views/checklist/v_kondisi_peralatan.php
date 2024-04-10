@@ -13,38 +13,72 @@
         ?>
 
 <div>
-<div>
-    <h5>Teknisi : <?=$taman_alat->petugas?></h5>
-    <h5>Waktu Pengecekan : <?=$taman_alat->shift?></h5>
-</div>
-<div class="table-responsive">
-    <table class="table table-striped table-bordered table-hover">
-        <thead>
-            <tr class="text-center">
+    <div>
+        <h5>Teknisi&emsp; &emsp; &emsp;&emsp;&emsp;&emsp;: <?=$taman_alat->petugas?></h5>
+        <h5>Waktu Pengecekan&emsp;: <?=$taman_alat->shift?></h5>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered table-hover">
+            <thead>
+                <tr class="text-center">
+                    <th style="white-space: nowrap; width: 1%;">No</th>
+                    <th style="white-space: nowrap; width: 1%;">Peralatan</th>
+                    <th style="white-space: nowrap; width: 1%;">Kondisi Peralatan</th>
+                    <th>Catatan</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="background-color: #ebba34;">A</td>
+                    <td colspan="3" style="background-color: #ebba34;">Taman Alat</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td style="white-space: nowrap; width: 1%;">Sangkar Meteorologi</td>
+                    <td>Baik</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Anemometer</td>
+                    <td>Baik</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Panci Penguapan</td>
+                    <td>Baik</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Penakar Hujan Manual</td>
+                    <td>Baik</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td style="white-space: nowrap; width: 1%;">Penakar Hujan Hillman</td>
+                    <td>Baik</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>Automatic Rain Gauge</td>
+                    <td>Baik</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
 
-                <th class="text-center">Sangkar Meteo</th>
-                <th class="text-center">Anemometer</th>
-                <th class="text-center">Panci Penguapan</th>
-                <th class="text-center">Campbell</th>
-                <th class="text-center">Hillman</th>
-                <th class="text-center">Penakar Hujan</th>
-                <th class="text-center">Catatan</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><?=$taman_alat->sangkar_meteo?></td>
-                <td><?=$taman_alat->anemometer?></td>
-                <td><?=$taman_alat->panci_penguapan?></td>
-                <td><?=$taman_alat->campbell?></td>
-                <td><?=$taman_alat->hillman?></td>
-                <td><?=$taman_alat->penakar_hujan?></td>
-                <td><?=$taman_alat->catatan?></td>
-            </tr>
-        </tbody>
+            </tbody>
 
-    </table>
-</div>
+        </table>
+    </div>
 </div>
 
 

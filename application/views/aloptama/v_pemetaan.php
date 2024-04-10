@@ -8,7 +8,9 @@ if ($this->session->flashdata('pesan')) {
 ?>
 <div id="map" style="width: 100%; height: 700px;"></div>
 <h2>List Intensity</h2>
-<button class="btn btn-m btn-success" type="button" data-column="#column-a">Cetak Laporan PDF</button><span>   </span><button class="btn btn-m btn-success" type="button" data-kolom="#column-a" >Cetak Laporan Excel</button> <br> </br> <br> </br>
+<button class="btn btn-m btn-success" type="button" data-column="#column-a">Cetak Laporan PDF</button><span>
+</span><button class="btn btn-m btn-success" type="button" data-kolom="#column-a">Cetak Laporan Excel</button> <br>
+</br> <br> </br>
 
 <div class="table-responsive m-3">
 
@@ -19,7 +21,7 @@ if ($this->session->flashdata('pesan')) {
                 <th>Kode</th>
                 <th>Lokasi</th>
                 <th class="hidden">Kondisi</th>
-                <th>Kunjungan <br>
+                <th style="white-space: nowrap; width: 1%;">Kunjungan <br>
                     2024
                     <?php
             $CI =& get_instance();
@@ -27,7 +29,7 @@ if ($this->session->flashdata('pesan')) {
             $total_kunjungan = $CI->m_aloptama->total_kunjungan($jenis_aloptama); 
             echo '('.$total_kunjungan.')';?>
                 </th>
-                <th>Last kunjung</th>
+                <th style="white-space: nowrap; width: 1%;">Last kunjung</th>
                 <th>Rekomendasi Terakhir</th>
                 <th>Kerusakan</th>
                 <th>Catatan Teknisi</th>
@@ -43,16 +45,21 @@ if ($this->session->flashdata('pesan')) {
         foreach($aloptama as $key => $value){?>
             <tr>
                 <td><?=$no++?></td>
-                <td><a href="<?=base_url('aloptama/detail_aloptama/'.$jenis_aloptama.'/'.$value->id) ?>"><?=$value->kode?></a>
+                <td><a
+                        href="<?=base_url('aloptama/detail_aloptama/'.$jenis_aloptama.'/'.$value->id) ?>"><?=$value->kode?></a>
                 </td>
                 <td><?=$value->lokasi?></td>
                 <td class="hidden"><?=$value->kondisi_terkini?></td>
-                <td><?=$jml = $CI->m_aloptama->ambil_jumlah_kunjungan($jenis_aloptama,$value->id);?></td>
-                <td><?php $tanggal= $CI->m_aloptama->tanggal_kunjungan_terbaru($jenis_aloptama,$value->id);
-                    $newDate = date("d-m-Y", strtotime($tanggal));  
-                    echo $newDate;  ?></td>
+                <td style="white-space: nowrap; width: 1%;">
+                    <?=$jml = $CI->m_aloptama->ambil_jumlah_kunjungan($jenis_aloptama,$value->id);?></td>
+                <td style="white-space: nowrap; width: 1%;"><?php $tanggal= $CI->m_aloptama->tanggal_kunjungan_terbaru($jenis_aloptama,$value->id);
+                    if ($tanggal!=null) {
+                    $newDate = date("d/m/y", strtotime($tanggal));  
+                    echo strval($newDate);  
+                    }
+                    ?></td>
 
-                <td><?php 
+                <td style="width: 20%;"><?php 
                 $rekomendasi= $CI->m_aloptama->rekomendasi_kunjungan_terbaru($jenis_aloptama,$value->id);
                 if ($rekomendasi != NULL and $rekomendasi != "" ) {
                   # code...
@@ -74,8 +81,8 @@ if ($this->session->flashdata('pesan')) {
                 if (($kerusakan= $CI->m_aloptama->kerusakan_kunjungan_terbaru($jenis_aloptama,$value->id)) == "") {
                   # code...
                 };?></td>
-                  <td><textarea class="form-control textAreaMultiline" name="text_wa" rows="4" placeholder="" cols="50"
-                disabled><?=$value->catatan?></textarea></td>
+                <td style="width: 25%;"><textarea class="form-control textAreaMultiline" name="text_wa" rows="4"
+                        placeholder="" cols="50" disabled><?=$value->catatan?></textarea></td>
                 <td style="white-space: nowrap;">
                     <a class='btn btn-xs btn-success'
                         href='<?=base_url('aloptama/detail_aloptama/'.$jenis_aloptama.'/'.$value->id) ?>'> Detail</a>
@@ -331,27 +338,32 @@ $(document).on("click", "[data-column]", function() {
 });
 
 function ExportToExcel(type, fn, dl) {
-       var elt = document.getElementById('dataTables-example');
-       var wb = XLSX.utils.table_to_book(elt, { sheet: "sheet1" });
-       return dl ?
-         XLSX.write(wb, { bookType: type, bookSST: true, type: 'base64' }):
-         XLSX.writeFile(wb, fn || ('MySheetName.' + (type || 'xlsx')));
-    }
+    var elt = document.getElementById('dataTables-example');
+    var wb = XLSX.utils.table_to_book(elt, {
+        sheet: "sheet1"
+    });
+    return dl ?
+        XLSX.write(wb, {
+            bookType: type,
+            bookSST: true,
+            type: 'base64'
+        }) :
+        XLSX.writeFile(wb, fn || ('MySheetName.' + (type || 'xlsx')));
+}
 
 $(document).on("click", "[data-kolom]", function() {
 
-// var button = $(this),
-//     header = $(button.data("kolom")),
-//     table = header.closest("table"),
-//     index = header.index() + 1, // convert to CSS's 1-based indexing
-//     selector = "tbody tr td:nth-child(" + index + ")",
-//     column = table.find(selector).add(header);
+    // var button = $(this),
+    //     header = $(button.data("kolom")),
+    //     table = header.closest("table"),
+    //     index = header.index() + 1, // convert to CSS's 1-based indexing
+    //     selector = "tbody tr td:nth-child(" + index + ")",
+    //     column = table.find(selector).add(header);
 
 
 
-// column.toggleClass("disabled");
+    // column.toggleClass("disabled");
 
-ExportToExcel('xlsx');
+    ExportToExcel('xlsx');
 });
-
 </script>

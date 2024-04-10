@@ -69,10 +69,10 @@
             </tbody>
         </table>
 
-        <a href="<?=base_url('aloptama')?>"><button class="btn btn-success">Pemetaan</button></a>
+        <a href="<?=base_url('aloptama')?>"><button class="btn btn-success">Home</button></a>
         <a class='btn btn-warning <?php if ($this->session->userdata('role_id') == 2) {echo 'hidden';}?>'
-                        href='<?=base_url('aloptama/edit/'.$aloptama->id) ?>'>
-                        Edit</a>
+            href='<?=base_url('aloptama/edit/'.$jenis_aloptama.'/'.$aloptama->id) ?>'>
+            Edit</a>
     </div>
 
 
@@ -118,7 +118,7 @@
                 <td><?php $pelaksana = str_replace("\n", '<br />', $value->pelaksana);
                     echo $pelaksana;?></td>
                 <td><textarea class="form-control textAreaMultiline" name="text_wa" rows="8" placeholder="" cols="50"
-                disabled><?=$value->text_wa?></textarea></td>
+                        disabled><?=$value->text_wa?></textarea></td>
                 <td><?php if ($value->catatan_kunjungan != NULL) {
                             $catatan = str_replace("\n", '<br />', $value->catatan_kunjungan);
                             echo $catatan;

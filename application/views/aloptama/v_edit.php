@@ -20,18 +20,15 @@
         <?php echo form_open_multipart('aloptama/update_data/'.$jenis_aloptama.'/'.$aloptama->id)?>
         <div class="form-group">
             <label for="">Kode</label>
-            <input disabled class="form-control" name="" placeholder=""
-                value="<?=$aloptama->kode?>">
+            <input disabled class="form-control" name="" placeholder="" value="<?=$aloptama->kode?>">
         </div>
         <div class="form-group" hidden>
             <label for="">id Aloptama</label>
-            <input class="form-control" name="id" placeholder="Nama Lokasi" value="<?=$aloptama->id?>"
-                required>
+            <input class="form-control" name="id" placeholder="Nama Lokasi" value="<?=$aloptama->id?>" required>
         </div>
         <div class="form-group hidden">
             <label for="">Kode</label>
-            <input class="form-control" name="kode" placeholder="Nama Site" required
-                value="<?=$aloptama->kode?>">
+            <input class="form-control" name="kode" placeholder="Nama Site" required value="<?=$aloptama->kode?>">
         </div>
         <div class="form-group">
             <label for="">Koordinat</label>
@@ -62,10 +59,10 @@
                 <?php if ($jenis_aloptama == 'intensity'):?>
                 <option <?php if ($aloptama->tipe =="P-alert") {
                     echo "selected";
-                }?>  value="P-alert">P-alert</option>
+                }?> value="P-alert">P-alert</option>
                 <option <?php if ($aloptama->tipe =="Reis") {
                     echo "selected";
-                }?>  value="Reis">Reis</option>
+                }?> value="Reis">Reis</option>
                 <?php endif ?>
 
                 <!-- Untuk Seismo -->
@@ -117,7 +114,7 @@
         <?php echo form_close()?>
         <div class="form-group">
             <button type="" class="btn btn-success" name="btn-check">Cek Lokasi</button>
-            <a href="<?=base_url('intensity/')?>"><button class="btn btn-danger">Kembali</button></a>
+            <a href="<?=base_url('aloptama/')?>"><button class="btn btn-danger">Home</button></a>
         </div>
 
 
