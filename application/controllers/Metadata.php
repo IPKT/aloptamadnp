@@ -169,7 +169,8 @@ class Metadata extends CI_Controller {
              'jenis_aloptama' => $jenis_aloptama,
              'hardware' => $this->m_metadata->detail_metadata($jenis_aloptama, $id_aloptama),
              'jenis_hardware' => $this->m_metadata->jenis_hardware_yang_ada(),
-             'kode' => $kode
+             'kode' => $kode,
+             'aloptama' => $this->m_aloptama->detail_aloptama($jenis_aloptama,$id_aloptama)
          );
          $this->load->view('v_template',$data,false);
      }
@@ -229,6 +230,53 @@ class Metadata extends CI_Controller {
             redirect("metadata/detail_metadata/intensity/$id_aloptama/$kode_aloptama");
         }
      }
+
+         //  input metadata hardware
+         public function input_via_modal($jenis_aloptama,$kode)
+         {
+             $this->form_validation->set_rules('jenis_hardware', 'Jenis Hardware', 'required', array(
+                 'required' => '%s Wajib Diisi !'
+             ));
+             $this->form_validation->set_rules('merk', 'Merk', 'required', array(
+                 'required' => '%s Wajib Diisi !'
+             ));
+             $this->form_validation->set_rules('tipe', 'Tipe', 'required', array(
+                 'required' => '%s Wajib Diisi !'
+             ));
+           
+             // $this->form_validation->set_rules('tanggal_pemasangan', 'Tanggal Pemasangan', 'required', array(
+             //     'required' => '%s Wajib Diisi !'
+             // ));
+     
+     
+             if ($this->form_validation->run()==FALSE) {
+                 $data = array(
+                     'judul' => 'Input Metadata Hardware'.$jenis_aloptama,
+                     'page' => 'metadata/v_input_metadata',
+                     'jenis_aloptama' => $jenis_aloptama,
+                     'aloptama' => $this->m_aloptama->allData($jenis_aloptama)
+                 );
+                 $this->load->view('v_template',$data,false);
+             }else{
+                 $data = array(
+                     'id_aloptama' => $this->input->post('id_aloptama'),
+                     'jenis_aloptama' => $jenis_aloptama,
+                     'jenis_hardware' => $this->input->post('jenis_hardware'),
+                     'merk' => $this->input->post('merk'),
+                     'tipe' => $this->input->post('tipe'),
+                     'sn' => $this->input->post('sn'),
+                     'tanggal_pemasangan' => $this->input->post('tanggal_pemasangan'),
+                     'sumber' => $this->input->post('sumber')
+                  
+                 );
+                 $id_aloptama = $this->input->post('id_aloptama');
+                 $jenis_hardware = $this->input->post('jenis_hardware');
+     
+                 $this->m_metadata->input_metadata($data,'hardware_aloptama');
+                 $this->session->set_flashdata('pesan', "Data Hardware berupa $jenis_hardware berhasil Disimpan !!");
+                 redirect("metadata/detail_metadata/$jenis_aloptama/$id_aloptama/$kode");
+             }
+         }
 
 
 }

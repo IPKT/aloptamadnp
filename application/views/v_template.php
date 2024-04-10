@@ -180,7 +180,7 @@ font-size: 16px;">
 
 
                     <li>
-                        <a href="<?=base_url('lokasi')?>"><i class="fa fa-dashboard "></i> Home</a>
+                        <a href="<?=base_url('aloptama/')?>"><i class="fa fa-dashboard "></i> Home</a>
                     </li>
                     <li class="hidden">
                         <a href="login.html"><i class="fa fa-bolt "></i> Login</a>

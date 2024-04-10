@@ -31,15 +31,19 @@ class Aloptama extends CI_Controller {
          
      }
 
-    // public function index()
-	// {
-    //     $data = array(
-    //         'judul' => 'Pemetaan Lokasi Intensity',
-    //         'page' => 'aloptama/v_pemetaan',
-    //         'intensity' => $this->m_aloptama->allData('intensity'),
-    //     );
-	// 	$this->load->view('v_template',$data,false);
-	// }
+    public function index()
+	{
+        $data = array(
+            'judul' => 'Aloptama Stageof Denpasar',
+            'page' => 'aloptama/v_home',
+            'intensity' => $this->m_aloptama->allData('intensity'),
+            'seismo' => $this->m_aloptama->allData('seismo'),
+            'wrs' => $this->m_aloptama->allData('wrs'),
+            'acc_noncolo' => $this->m_aloptama->allData('acc_noncolo'),
+            'int_reis' => $this->m_aloptama->allData('int_reis'),
+        );
+		$this->load->view('v_template',$data,false);
+	}
 
     public function home($jenis_aloptama)
 	{
