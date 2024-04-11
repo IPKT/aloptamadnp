@@ -61,6 +61,8 @@
                 <option value="Hub Switch">Hub Switch</option>
                 <option value="Terminal Arrester">Terminal Arrester</option>
                 <option value="Adaptor Cube">Adaptor Cube</option>
+                <option value="LAN Arrester">LAN Arrester</option>
+                <option value="Antenna Outdoor">Antenna Outdoor</option>
                 <?php endif ?>
                 <?php if ($hardware->jenis_aloptama == 'seismo'):?>
                 <option value="Modem GSM">Modem VSAT</option>
