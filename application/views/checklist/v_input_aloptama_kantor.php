@@ -13,7 +13,7 @@
         }
         
         ?>
-        <?php echo form_open_multipart("checklist/input_taman_alat")?>
+        <?php echo form_open_multipart("checklist/input_aloptama_kantor")?>
 
         <div class="form-group">
             <label for="" onclick="hideStyle('petugas')">Petugas</label>
@@ -46,82 +46,61 @@
             <input class="form-control" type="time" name="waktu">
         </div>
         <div class="form-group">
-            <label for="" onclick="hideStyle('sangkar_meteo')">Sangkar Meteo</label>
-            <select class="form-control" id="sangkar_meteo" name="sangkar_meteo" onchange="toggleInput('sangkar_meteo')"
+            <label for="" onclick="hideStyle('seismo')">Seismograph DNP</label>
+            <select class="form-control" id="seismo" name="seismo" onchange="toggleInput('seismo')"
                 style="display: block;">
                 <option value="Baik">Baik</option>
                 <option value="Rusak">Rusak</option>
                 <option value="lainnya">Lainnya</option>
             </select>
-            <input name="sangkar_meteo_lainnya" class="form-control" type="text" id="sangkar_meteo_lainnya"
-                style="display: none;" placeholder="Masukkan opsi lainnya">
+            <input name="seismo_lainnya" class="form-control" type="text" id="seismo_lainnya" style="display: none;"
+                placeholder="Masukkan opsi lainnya">
         </div>
         <div class="form-group">
-            <label for="" onclick="hideStyle('anemometer')">Anemometer</label>
-            <select class="form-control" id="anemometer" name="anemometer" onchange="toggleInput('anemometer')">
+            <label for="" onclick="hideStyle('radio_broadcaster')">Radio Broadcaster</label>
+            <select class="form-control" id="radio_broadcaster" name="radio_broadcaster"
+                onchange="toggleInput('radio_broadcaster')">
                 <option value="Baik">Baik</option>
                 <option value="Rusak">Rusak</option>
                 <option value="lainnya">Lainnya</option>
             </select>
-            <input name="anemometer_lainnya" class="form-control" type="text" id="anemometer_lainnya"
-                style="display: none;" placeholder="Masukkan opsi lainnya">
-        </div>
-
-        <div class="form-group">
-            <label for="" onclick="hideStyle('panci_penguapan')">Panci Penguapan</label>
-            <select class="form-control" id="panci_penguapan" name="panci_penguapan"
-                onchange="toggleInput('panci_penguapan')">
-                <option value="Baik">Baik</option>
-                <option value="Rusak">Rusak</option>
-                <option value="lainnya">Lainnya</option>
-            </select>
-            <input name="panci_penguapan_lainnya" class="form-control" type="text" id="panci_penguapan_lainnya"
+            <input name="radio_broadcaster_lainnya" class="form-control" type="text" id="radio_broadcaster_lainnya"
                 style="display: none;" placeholder="Masukkan opsi lainnya">
         </div>
 
         <div class="form-group">
-            <label for="" onclick="hideStyle('campbell')">Campbell Stoke</label>
-            <select class="form-control" id="campbell" name="campbell" onchange="toggleInput('campbell')">
+            <label for="" onclick="hideStyle('wrs')">WRS</label>
+            <select class="form-control" id="wrs" name="wrs" onchange="toggleInput('wrs')">
                 <option value="Baik">Baik</option>
                 <option value="Rusak">Rusak</option>
                 <option value="lainnya">Lainnya</option>
             </select>
-            <input name="campbell_lainnya" class="form-control" type="text" id="campbell_lainnya" style="display: none;"
+            <input name="wrs_lainnya" class="form-control" type="text" id="wrs_lainnya" style="display: none;"
                 placeholder="Masukkan opsi lainnya">
         </div>
 
         <div class="form-group">
-            <label for="" onclick="hideStyle('penakar_hujan')">Penakar Hujan Manual</label>
-            <select class="form-control" id="penakar_hujan" name="penakar_hujan"
-                onchange="toggleInput('penakar_hujan')">
+            <label for="" onclick="hideStyle('intensity_realshake')">Intensitymeter Realshake</label>
+            <select class="form-control" id="intensity_realshake" name="intensity_realshake"
+                onchange="toggleInput('intensity_realshake')">
                 <option value="Baik">Baik</option>
                 <option value="Rusak">Rusak</option>
                 <option value="lainnya">Lainnya</option>
             </select>
-            <input name="penakar_hujan_lainnya" class="form-control" type="text" id="penakar_hujan_lainnya"
+            <input name="intensity_realshake_lainnya" class="form-control" type="text" id="intensity_realshake_lainnya"
                 style="display: none;" placeholder="Masukkan opsi lainnya">
         </div>
-        <div class="form-group">
-            <label for="" onclick="hideStyle('hillman')">Hillman</label>
-            <select class="form-control" id="hillman" name="hillman" onchange="toggleInput('hillman')">
-                <option value="Baik">Baik</option>
-                <option value="Rusak">Rusak</option>
-                <option value="lainnya">Lainnya</option>
-            </select>
-            <input name="hillman_lainnya" class="form-control" type="text" id="hillman_lainnya" style="display: none;"
-                placeholder="Masukkan opsi lainnya">
-        </div>
-        <div class="form-group">
-            <label for="" onclick="hideStyle('arg')">ARG</label>
-            <select class="form-control" id="arg" name="arg" onchange="toggleInput('arg')">
-                <option value="Baik">Baik</option>
-                <option value="Rusak">Rusak</option>
-                <option value="lainnya">Lainnya</option>
-            </select>
-            <input name="arg_lainnya" class="form-control" type="text" id="arg_lainnya" style="display: none;"
-                placeholder="Masukkan opsi lainnya">
-        </div>
 
+        <div class="form-group">
+            <label for="" onclick="hideStyle('petir')">Lightning Detector</label>
+            <select class="form-control" id="petir" name="petir" onchange="toggleInput('petir')">
+                <option value="Baik">Baik</option>
+                <option value="Rusak">Rusak</option>
+                <option value="lainnya">Lainnya</option>
+            </select>
+            <input name="petir_lainnya" class="form-control" type="text" id="petir_lainnya" style="display: none;"
+                placeholder="Masukkan opsi lainnya">
+        </div>
         <div class="form-group">
             <label for="">Catatan</label>
             <textarea class="form-control textAreaMultiline" name="catatan" rows="3" placeholder="1. \n2. "></textarea>

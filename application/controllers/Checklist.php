@@ -40,7 +40,8 @@ class Checklist extends CI_Controller {
          $data = array(
              'judul' => 'Kondisi Terbaru Peralatan',
              'page' => 'checklist/v_kondisi_peralatan',
-             'taman_alat' =>$this->m_checklist->dataTerbaru('tbl_taman_alat')
+             'taman_alat' =>$this->m_checklist->dataTerbaru('tbl_taman_alat'),
+             'aloptama_kantor' =>$this->m_checklist->dataTerbaru('tbl_aloptama_kantor')
          );
          $this->load->view('v_template',$data,false);
      }
@@ -59,8 +60,8 @@ class Checklist extends CI_Controller {
      }
 
 
-    //  input barang
-     public function input($jenis)
+    //  input checklist taman alat
+     public function input_taman_alat()
     {
         $this->form_validation->set_rules('petugas', 'Petugas', 'required', array(
             'required' => '%s Wajib Diisi !'
@@ -74,8 +75,8 @@ class Checklist extends CI_Controller {
 
         if ($this->form_validation->run()==FALSE) {
             $data = array(
-                'judul' => 'Cheklist '.ucwords(str_replace("_"," ",$jenis)),
-                'page' => 'checklist/v_input_'.$jenis,
+                'judul' => 'Cheklist Taman Alat',
+                'page' => 'checklist/v_input_taman_alat',
                //  'aloptama' => $this->m_aloptama->allData($jenis_aloptama)
     
             );
@@ -85,19 +86,64 @@ class Checklist extends CI_Controller {
                 'petugas' => $this->input->post('petugas'),
                 'tanggal' => $this->input->post('tanggal'),
                 'shift' => $this->input->post('shift'),
+                'waktu' => $this->input->post('waktu'),
                 'sangkar_meteo' => $this->input->post('sangkar_meteo'),
                 'anemometer' => $this->input->post('anemometer'),
                 'panci_penguapan' => $this->input->post('panci_penguapan'),
                 'campbell' => $this->input->post('campbell'),
                 'penakar_hujan' => $this->input->post('penakar_hujan'),
                 'hillman' => $this->input->post('hillman'),
+                'arg' => $this->input->post('arg'),
                 'catatan' => $this->input->post('catatan'),
              
             );
 
-            $this->m_checklist->input($data,'tbl_'.$jenis);
-            $this->session->set_flashdata('pesan', "Data checklist $jenis berhasil Disimpan !!");
-            redirect("checklist/input_page/$jenis");
+            $this->m_checklist->input($data,'tbl_taman_alat');
+            $this->session->set_flashdata('pesan', "Data checklist Taman Alat berhasil Disimpan !!");
+            redirect("checklist/input_page/taman_alat");
+        }
+    }
+
+
+    //  input checklist aloptama kantor
+    public function input_aloptama_kantor()
+    {
+        $this->form_validation->set_rules('petugas', 'Petugas', 'required', array(
+            'required' => '%s Wajib Diisi !'
+        ));
+        $this->form_validation->set_rules('tanggal', 'Tanggal', 'required', array(
+            'required' => '%s Wajib Diisi !'
+        ));
+        $this->form_validation->set_rules('shift', 'Shift', 'required', array(
+            'required' => '%s Wajib Diisi !'
+        ));
+
+        if ($this->form_validation->run()==FALSE) {
+            $data = array(
+                'judul' => 'Cheklist Aloptama Kantor',
+                'page' => 'checklist/v_input_aloptama_kantor',
+               //  'aloptama' => $this->m_aloptama->allData($jenis_aloptama)
+    
+            );
+            $this->load->view('v_template',$data,false);
+        }else{
+            $data = array(
+                'petugas' => $this->input->post('petugas'),
+                'tanggal' => $this->input->post('tanggal'),
+                'shift' => $this->input->post('shift'),
+                'waktu' => $this->input->post('waktu'),
+                'seismo' => $this->input->post('seismo'),
+                'radio_broadcaster' => $this->input->post('radio_broadcaster'),
+                'wrs' => $this->input->post('wrs'),
+                'intensity_realshake' => $this->input->post('intensity_realshake'),
+                'petir' => $this->input->post('petir'),
+                'catatan' => $this->input->post('catatan'),
+             
+            );
+
+            $this->m_checklist->input($data,'tbl_aloptama_kantor');
+            $this->session->set_flashdata('pesan', "Data checklist Aloptama Kantor berhasil Disimpan !!");
+            redirect("checklist/input_page/aloptama_kantor");
         }
     }
     

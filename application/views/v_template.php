@@ -501,17 +501,15 @@ font-size: 16px;">
                     <li>
                         <a href="#"><i class="fa fa-sitemap "></i> Check List Aloptama<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                        <li>
+                            <li>
                                 <a href="<?=base_url('checklist/')?>">Kondisi Peralatan</a>
                             </li>
                             <li>
                                 <a href="<?=base_url('checklist/input_page/taman_alat')?>">Checklist Taman Alat</a>
                             </li>
                             <li>
-                                <a href="<?=base_url('gudang/input')?>">Input Barang</a>
-                            </li>
-                            <li>
-                                <a href="<?=base_url('gudang/barang_keluar')?>">Barang Keluar</a>
+                                <a href="<?=base_url('checklist/input_page/aloptama_kantor')?>">Checklist Aloptama
+                                    Kantor</a>
                             </li>
                         </ul>
                     </li>
