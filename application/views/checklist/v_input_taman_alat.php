@@ -130,7 +130,6 @@
 
         <div class="form-group">
             <button type="submit" class="btn btn-primary">Simpan</button>
-            <button type="reset" class="btn btn-danger">Riset</button>
         </div>
         <?php echo form_close()?>
 

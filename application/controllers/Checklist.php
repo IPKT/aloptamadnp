@@ -41,13 +41,15 @@ class Checklist extends CI_Controller {
              'judul' => 'Kondisi Terbaru Peralatan',
              'page' => 'checklist/v_kondisi_peralatan',
              'taman_alat' =>$this->m_checklist->dataTerbaru('tbl_taman_alat'),
-             'aloptama_kantor' =>$this->m_checklist->dataTerbaru('tbl_aloptama_kantor')
+             'aloptama_kantor' =>$this->m_checklist->dataTerbaru('tbl_aloptama_kantor'),
+             'sp' =>$this->m_checklist->dataTerbaru('tbl_sistem_processing'),
+             'ji' =>$this->m_checklist->dataTerbaru('tbl_jaringan_internet'),
          );
          $this->load->view('v_template',$data,false);
      }
 
 
-     //input page barang masuk
+     //input page checklist
      public function input_page($jenis)
      {  
          $data = array(
@@ -146,5 +148,92 @@ class Checklist extends CI_Controller {
             redirect("checklist/input_page/aloptama_kantor");
         }
     }
+
+        //  input checklist sistem processing
+        public function input_sp()
+        {
+            $this->form_validation->set_rules('petugas', 'Petugas', 'required', array(
+                'required' => '%s Wajib Diisi !'
+            ));
+            $this->form_validation->set_rules('tanggal', 'Tanggal', 'required', array(
+                'required' => '%s Wajib Diisi !'
+            ));
+            $this->form_validation->set_rules('shift', 'Shift', 'required', array(
+                'required' => '%s Wajib Diisi !'
+            ));
+    
+            if ($this->form_validation->run()==FALSE) {
+                $data = array(
+                    'judul' => 'Cheklist Sistem Processing',
+                    'page' => 'checklist/v_input_sistem_processing',
+                   //  'aloptama' => $this->m_aloptama->allData($jenis_aloptama)
+        
+                );
+                $this->load->view('v_template',$data,false);
+            }else{
+                $data = array(
+                    'petugas' => $this->input->post('petugas'),
+                    'tanggal' => $this->input->post('tanggal'),
+                    'shift' => $this->input->post('shift'),
+                    'waktu' => $this->input->post('waktu'),
+                    'sc_seismo_server' => $this->input->post('sc_seismo_server'),
+                    'sc_seismo_client' => $this->input->post('sc_seismo_client'),
+                    'sc_acc_server' => $this->input->post('sc_acc_server'),
+                    'sc_acc_pusat' => $this->input->post('sc_acc_pusat'),
+                    'sc_acc_regional' => $this->input->post('sc_acc_regional'),
+                    'anemometer' => $this->input->post('anemometer'),
+                    'petir' => $this->input->post('petir'),
+                    'catatan' => $this->input->post('catatan'),
+                 
+                );
+    
+                $this->m_checklist->input($data,'tbl_sistem_processing');
+                $this->session->set_flashdata('pesan', "Data checklist Sistem Processing berhasil Disimpan !!");
+                redirect("checklist/input_page/sistem_processing");
+            }
+        }
+
+          //  input checklist jaringan internet
+          public function input_jaringan_internet()
+          {
+              $this->form_validation->set_rules('petugas', 'Petugas', 'required', array(
+                  'required' => '%s Wajib Diisi !'
+              ));
+              $this->form_validation->set_rules('tanggal', 'Tanggal', 'required', array(
+                  'required' => '%s Wajib Diisi !'
+              ));
+              $this->form_validation->set_rules('shift', 'Shift', 'required', array(
+                  'required' => '%s Wajib Diisi !'
+              ));
+      
+              if ($this->form_validation->run()==FALSE) {
+                  $data = array(
+                      'judul' => 'Cheklist Sistem Processing',
+                      'page' => 'checklist/v_input_jaringan_internet',
+                     //  'aloptama' => $this->m_aloptama->allData($jenis_aloptama)
+          
+                  );
+                  $this->load->view('v_template',$data,false);
+              }else{
+                  $data = array(
+                      'petugas' => $this->input->post('petugas'),
+                      'tanggal' => $this->input->post('tanggal'),
+                      'shift' => $this->input->post('shift'),
+                      'waktu' => $this->input->post('waktu'),
+                      'lintas' => $this->input->post('lintas'),
+                      'catatan_lintas' => $this->input->post('catatan_lintas'),
+                      'indihome' => $this->input->post('indihome'),
+                      'catatan_indihome' => $this->input->post('catatan_indihome'),
+                      'biznet' => $this->input->post('biznet'),
+                      'catatan_biznet' => $this->input->post('catatan_biznet'),
+                      'catatan' => $this->input->post('catatan'),
+                   
+                  );
+      
+                  $this->m_checklist->input($data,'tbl_jaringan_internet');
+                  $this->session->set_flashdata('pesan', "Data checklist Jaringan Internet berhasil Disimpan !!");
+                  redirect("checklist/input_page/jaringan_internet");
+              }
+          }
     
 }

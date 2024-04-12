@@ -13,7 +13,7 @@
         }
         
         ?>
-        <?php echo form_open_multipart("checklist/input_aloptama_kantor")?>
+        <?php echo form_open_multipart("checklist/input_jaringan_internet")?>
 
         <div class="form-group">
             <label for="" onclick="hideStyle('petugas')">Petugas</label>
@@ -46,60 +46,37 @@
             <input class="form-control" type="time" name="waktu">
         </div>
         <div class="form-group">
-            <label for="" onclick="hideStyle('seismo')">Seismograph DNP</label>
-            <select class="form-control" id="seismo" name="seismo" onchange="toggleInput('seismo')"
-                style="display: block;">
+            <label for="">Provider Lintas Arta</label>
+            <select class="form-control" id="" name="lintas" style="display: block;">
                 <option value="Baik">Baik</option>
                 <option value="Rusak">Rusak</option>
-                <option value="lainnya">Lainnya</option>
             </select>
-            <input name="seismo_lainnya" class="form-control" type="text" id="seismo_lainnya" style="display: none;"
-                placeholder="Masukkan opsi lainnya">
         </div>
         <div class="form-group">
-            <label for="" onclick="hideStyle('radio_broadcaster')">Radio Broadcaster</label>
-            <select class="form-control" id="radio_broadcaster" name="radio_broadcaster"
-                onchange="toggleInput('radio_broadcaster')">
-                <option value="Baik">Baik</option>
-                <option value="Rusak">Rusak</option>
-                <option value="lainnya">Lainnya</option>
-            </select>
-            <input name="radio_broadcaster_lainnya" class="form-control" type="text" id="radio_broadcaster_lainnya"
-                style="display: none;" placeholder="Masukkan opsi lainnya">
+            <input name="catatan_lintas" class="form-control" type="text" id=""
+                placeholder="Masukkan Catatan (speed test)">
         </div>
-
         <div class="form-group">
-            <label for="" onclick="hideStyle('wrs')">WRS</label>
-            <select class="form-control" id="wrs" name="wrs" onchange="toggleInput('wrs')">
+            <label for="">Provider Indihome</label>
+            <select class="form-control" id="" name="indihome" style="display: block;">
                 <option value="Baik">Baik</option>
                 <option value="Rusak">Rusak</option>
-                <option value="lainnya">Lainnya</option>
             </select>
-            <input name="wrs_lainnya" class="form-control" type="text" id="wrs_lainnya" style="display: none;"
-                placeholder="Masukkan opsi lainnya">
         </div>
-
         <div class="form-group">
-            <label for="" onclick="hideStyle('intensity_realshake')">Intensitymeter Realshake</label>
-            <select class="form-control" id="intensity_realshake" name="intensity_realshake"
-                onchange="toggleInput('intensity_realshake')">
-                <option value="Baik">Baik</option>
-                <option value="Rusak">Rusak</option>
-                <option value="lainnya">Lainnya</option>
-            </select>
-            <input name="intensity_realshake_lainnya" class="form-control" type="text" id="intensity_realshake_lainnya"
-                style="display: none;" placeholder="Masukkan opsi lainnya">
+        <input name="catatan_indihome" class="form-control" type="text" id=""
+                placeholder="Masukkan Catatan (speed test)">
         </div>
-
         <div class="form-group">
-            <label for="" onclick="hideStyle('petir')">Lightning Detector</label>
-            <select class="form-control" id="petir" name="petir" onchange="toggleInput('petir')">
+            <label for="">Provider Biznet</label>
+            <select class="form-control" id="" name="biznet" style="display: block;">
                 <option value="Baik">Baik</option>
                 <option value="Rusak">Rusak</option>
-                <option value="lainnya">Lainnya</option>
             </select>
-            <input name="petir_lainnya" class="form-control" type="text" id="petir_lainnya" style="display: none;"
-                placeholder="Masukkan opsi lainnya">
+        </div>
+        <div class="form-group">
+        <input name="catatan_biznet" class="form-control" type="text" id=""
+                placeholder="Masukkan Catatan (speed test)">
         </div>
         <div class="form-group">
             <label for="">Catatan</label>

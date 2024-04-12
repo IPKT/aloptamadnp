@@ -13,7 +13,7 @@
         }
         
         ?>
-        <?php echo form_open_multipart("checklist/input_aloptama_kantor")?>
+        <?php echo form_open_multipart("checklist/input_sp")?>
 
         <div class="form-group">
             <label for="" onclick="hideStyle('petugas')">Petugas</label>
@@ -46,59 +46,80 @@
             <input class="form-control" type="time" name="waktu">
         </div>
         <div class="form-group">
-            <label for="" onclick="hideStyle('seismo')">Seismograph DNP</label>
-            <select class="form-control" id="seismo" name="seismo" onchange="toggleInput('seismo')"
+            <label for="" onclick="hideStyle('sc_seismo_server')">Seiscomp Inatews (Server)</label>
+            <select class="form-control" id="sc_seismo_server" name="sc_seismo_server" onchange="toggleInput('sc_seismo_server')"
                 style="display: block;">
                 <option value="Baik">Baik</option>
                 <option value="Rusak">Rusak</option>
                 <option value="lainnya">Lainnya</option>
             </select>
-            <input name="seismo_lainnya" class="form-control" type="text" id="seismo_lainnya" style="display: none;"
+            <input name="sc_seismo_server_lainnya" class="form-control" type="text" id="sc_seismo_server_lainnya" style="display: none;"
                 placeholder="Masukkan opsi lainnya">
         </div>
         <div class="form-group">
-            <label for="" onclick="hideStyle('radio_broadcaster')">Radio Broadcaster</label>
-            <select class="form-control" id="radio_broadcaster" name="radio_broadcaster"
-                onchange="toggleInput('radio_broadcaster')">
+            <label for="" onclick="hideStyle('sc_seismo_client')">Seiscomp Inatews (Client)</label>
+            <select class="form-control" id="sc_seismo_client" name="sc_seismo_client" onchange="toggleInput('sc_seismo_client')"
+                style="display: block;">
                 <option value="Baik">Baik</option>
                 <option value="Rusak">Rusak</option>
                 <option value="lainnya">Lainnya</option>
             </select>
-            <input name="radio_broadcaster_lainnya" class="form-control" type="text" id="radio_broadcaster_lainnya"
-                style="display: none;" placeholder="Masukkan opsi lainnya">
-        </div>
-
-        <div class="form-group">
-            <label for="" onclick="hideStyle('wrs')">WRS</label>
-            <select class="form-control" id="wrs" name="wrs" onchange="toggleInput('wrs')">
-                <option value="Baik">Baik</option>
-                <option value="Rusak">Rusak</option>
-                <option value="lainnya">Lainnya</option>
-            </select>
-            <input name="wrs_lainnya" class="form-control" type="text" id="wrs_lainnya" style="display: none;"
+            <input name="sc_seismo_client_lainnya" class="form-control" type="text" id="sc_seismo_client_lainnya" style="display: none;"
                 placeholder="Masukkan opsi lainnya">
         </div>
-
         <div class="form-group">
-            <label for="" onclick="hideStyle('intensity_realshake')">Intensitymeter Realshake</label>
-            <select class="form-control" id="intensity_realshake" name="intensity_realshake"
-                onchange="toggleInput('intensity_realshake')">
+            <label for="" onclick="hideStyle('sc_acc_server')">Shakemap Processing (Server)</label>
+            <select class="form-control" id="sc_acc_server" name="sc_acc_server" onchange="toggleInput('sc_acc_server')"
+                style="display: block;">
                 <option value="Baik">Baik</option>
                 <option value="Rusak">Rusak</option>
                 <option value="lainnya">Lainnya</option>
             </select>
-            <input name="intensity_realshake_lainnya" class="form-control" type="text" id="intensity_realshake_lainnya"
-                style="display: none;" placeholder="Masukkan opsi lainnya">
+            <input name="sc_acc_server_lainnya" class="form-control" type="text" id="sc_acc_server_lainnya" style="display: none;"
+                placeholder="Masukkan opsi lainnya">
         </div>
-
         <div class="form-group">
-            <label for="" onclick="hideStyle('petir')">Lightning Detector</label>
-            <select class="form-control" id="petir" name="petir" onchange="toggleInput('petir')">
+            <label for="" onclick="hideStyle('sc_acc_pusat')">Shakemap Processing Backup Pusat</label>
+            <select class="form-control" id="sc_acc_pusat" name="sc_acc_pusat" onchange="toggleInput('sc_acc_pusat')"
+                style="display: block;">
+                <option value="Baik">Baik</option>
+                <option value="Rusak">Rusak</option>
+                <option value="lainnya">Lainnya</option>
+            </select>
+            <input name="sc_acc_pusat_lainnya" class="form-control" type="text" id="sc_acc_pusat_lainnya" style="display: none;"
+                placeholder="Masukkan opsi lainnya">
+        </div>
+        <div class="form-group">
+            <label for="" onclick="hideStyle('sc_acc_regional')">Shakemap Processing Regional</label>
+            <select class="form-control" id="sc_acc_regional" name="sc_acc_regional" onchange="toggleInput('sc_acc_regional')"
+                style="display: block;">
+                <option value="Baik">Baik</option>
+                <option value="Rusak">Rusak</option>
+                <option value="lainnya">Lainnya</option>
+            </select>
+            <input name="sc_acc_regional_lainnya" class="form-control" type="text" id="sc_acc_regional_lainnya" style="display: none;"
+                placeholder="Masukkan opsi lainnya">
+        </div>
+        <div class="form-group">
+            <label for="" onclick="hideStyle('petir')">Sistem Akuisisi Petir</label>
+            <select class="form-control" id="petir" name="petir" onchange="toggleInput('petir')"
+                style="display: block;">
                 <option value="Baik">Baik</option>
                 <option value="Rusak">Rusak</option>
                 <option value="lainnya">Lainnya</option>
             </select>
             <input name="petir_lainnya" class="form-control" type="text" id="petir_lainnya" style="display: none;"
+                placeholder="Masukkan opsi lainnya">
+        </div>
+        <div class="form-group">
+            <label for="" onclick="hideStyle('anemometer')">Sistem Akuisisi Anemometer</label>
+            <select class="form-control" id="anemometer" name="anemometer" onchange="toggleInput('anemometer')"
+                style="display: block;">
+                <option value="Baik">Baik</option>
+                <option value="Rusak">Rusak</option>
+                <option value="lainnya">Lainnya</option>
+            </select>
+            <input name="anemometer_lainnya" class="form-control" type="text" id="anemometer_lainnya" style="display: none;"
                 placeholder="Masukkan opsi lainnya">
         </div>
         <div class="form-group">

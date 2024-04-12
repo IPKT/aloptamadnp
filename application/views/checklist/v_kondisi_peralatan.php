@@ -89,6 +89,10 @@
                     </td>
                 </tr>
                 <tr>
+                    <td style ="text-align:center;" colspan="3" >CATATAN</td>
+                    <td><?=$taman_alat->catatan?></td>
+                </tr>
+                <tr>
                     <td style="background-color: #ebba34;">B</td>
                     <td colspan="3" style="background-color: #ebba34;">Aloptama Geofisika</td>
                 </tr>
@@ -131,6 +135,100 @@
                     </td>
                     <td><?php if ($aloptama_kantor->petir != 'Baik' and $aloptama_kantor->petir != 'Rusak'  ) {echo $aloptama_kantor->petir;} ?>
                     </td>
+                </tr>
+                <tr>
+                    <td style ="text-align:center;" colspan="3" >CATATAN</td>
+                    <td><?=$aloptama_kantor->catatan?></td>
+                </tr>
+                <tr>
+                    <td style="background-color: #ebba34;">C</td>
+                    <td colspan="3" style="background-color: #ebba34;">Sistem Processing</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td style="white-space: nowrap; width: 1%;">Seiscomp Inatews (Server)</td>
+                    <td><?php if ($sp->sc_seismo_server != 'Baik' and $sp->sc_seismo_server != 'Rusak'  ) {echo "Dengan Catatan";} else {echo $sp->sc_seismo_server;}?>
+                    </td>
+                    <td><?php if ($sp->sc_seismo_server != 'Baik' and $sp->sc_seismo_server != 'Rusak'  ) {echo $sp->sc_seismo_server;} ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td style="white-space: nowrap; width: 1%;">Seiscomp Inatews (Client)</td>
+                    <td><?php if ($sp->sc_seismo_client != 'Baik' and $sp->sc_seismo_client != 'Rusak'  ) {echo "Dengan Catatan";} else {echo $sp->sc_seismo_client;}?>
+                    </td>
+                    <td><?php if ($sp->sc_seismo_client != 'Baik' and $sp->sc_seismo_client != 'Rusak'  ) {echo $sp->sc_seismo_client;} ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td style="white-space: nowrap; width: 1%;">Shakemap Processing (Server)</td>
+                    <td><?php if ($sp->sc_acc_server != 'Baik' and $sp->sc_acc_server != 'Rusak'  ) {echo "Dengan Catatan";} else {echo $sp->sc_acc_server;}?>
+                    </td>
+                    <td><?php if ($sp->sc_acc_server != 'Baik' and $sp->sc_acc_server != 'Rusak'  ) {echo $sp->sc_acc_server;} ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td style="white-space: nowrap; width: 1%;">Shakemap Processing Pusat</td>
+                    <td><?php if ($sp->sc_acc_pusat != 'Baik' and $sp->sc_acc_pusat != 'Rusak'  ) {echo "Dengan Catatan";} else {echo $sp->sc_acc_pusat;}?>
+                    </td>
+                    <td><?php if ($sp->sc_acc_pusat != 'Baik' and $sp->sc_acc_pusat != 'Rusak'  ) {echo $sp->sc_acc_pusat;} ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td style="white-space: nowrap; width: 1%;">Shakemap Processing Regional</td>
+                    <td><?php if ($sp->sc_acc_regional != 'Baik' and $sp->sc_acc_regional != 'Rusak'  ) {echo "Dengan Catatan";} else {echo $sp->sc_acc_regional;}?>
+                    </td>
+                    <td><?php if ($sp->sc_acc_regional != 'Baik' and $sp->sc_acc_regional != 'Rusak'  ) {echo $sp->sc_acc_regional;} ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td style="white-space: nowrap; width: 1%;">Sistem Akuisisi Anemometer</td>
+                    <td><?php if ($sp->anemometer != 'Baik' and $sp->anemometer != 'Rusak'  ) {echo "Dengan Catatan";} else {echo $sp->anemometer;}?>
+                    </td>
+                    <td><?php if ($sp->anemometer != 'Baik' and $sp->anemometer != 'Rusak'  ) {echo $sp->anemometer;} ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td style="white-space: nowrap; width: 1%;">Sistem Akuisisi Petir</td>
+                    <td><?php if ($sp->petir != 'Baik' and $sp->petir != 'Rusak'  ) {echo "Dengan Catatan";} else {echo $sp->petir;}?>
+                    </td>
+                    <td><?php if ($sp->petir != 'Baik' and $sp->petir != 'Rusak'  ) {echo $sp->petir;} ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td style ="text-align:center;" colspan="3" >CATATAN</td>
+                    <td><?=$sp->catatan?></td>
+                </tr>
+                <tr>
+                    <td style="background-color: #ebba34;">D</td>
+                    <td colspan="3" style="background-color: #ebba34;">Jaringan Internet</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td style="white-space: nowrap; width: 1%;">Provider Lintas Arta</td>
+                    <td><?=$ji->lintas?></td>
+                    <td><?=$ji->catatan_lintas?></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td style="white-space: nowrap; width: 1%;">Provider Indihome</td>
+                    <td><?=$ji->indihome?></td>
+                    <td><?=$ji->catatan_indihome?></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td style="white-space: nowrap; width: 1%;">Provider Biznet</td>
+                    <td><?=$ji->biznet?></td>
+                    <td><?=$ji->catatan_biznet?></td>
+                </tr>
+                <tr>
+                    <td style ="text-align:center;" colspan="3" >CATATAN</td>
+                    <td><?=$ji->catatan?></td>
                 </tr>
 
             </tbody>

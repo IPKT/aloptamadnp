@@ -511,6 +511,12 @@ font-size: 16px;">
                                 <a href="<?=base_url('checklist/input_page/aloptama_kantor')?>">Checklist Aloptama
                                     Kantor</a>
                             </li>
+                            <li>
+                                <a href="<?=base_url('checklist/input_page/sistem_processing')?>">Checklist Sistem Processing</a>
+                            </li>
+                            <li>
+                                <a href="<?=base_url('checklist/input_page/jaringan_internet')?>">Checklist Jaringan Internet</a>
+                            </li>
                         </ul>
                     </li>
                     <li class="hidden">
