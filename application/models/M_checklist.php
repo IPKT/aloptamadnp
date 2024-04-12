@@ -15,12 +15,16 @@ class M_checklist extends CI_Model {
         return $this->db->get()->row();
 
     }
+    public function detail_checklist($tabel,$tanggal,$shift){
+        return $this->db->get_where($tabel, array('tanggal' => $tanggal , 'shift'=>$shift))->row();
+    }
 
 
 
     public function allData($tabel,$orderby){
         $this->db->select('*');
-        $this->db->from($tabel)->order_by($orderby, 'ASC');
+        $this->db->from($tabel)->order_by($orderby, 'DESC');
+        $this->db->limit(5);
         return $this->db->get()->result();
         }
     public function detail_barang($id){

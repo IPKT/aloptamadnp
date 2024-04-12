@@ -15,7 +15,7 @@
 <div>
     <div>
         <h5>Teknisi&emsp; &emsp; &emsp;&emsp;&emsp;&emsp;: <?=$taman_alat->petugas?></h5>
-        <h5>Waktu Pengecekan&emsp;: <?=$taman_alat->shift?> <?=$taman_alat->waktu?></h5>
+        <h5>Waktu Pengecekan&emsp;: <?=$taman_alat->tanggal?> <?=$taman_alat->waktu?> WITA</h5>
     </div>
     <div class="table-responsive">
         <table class="table table-striped table-bordered table-hover">
@@ -89,7 +89,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td style ="text-align:center;" colspan="3" >CATATAN</td>
+                    <td style="text-align:center;" colspan="3">CATATAN</td>
                     <td><?=$taman_alat->catatan?></td>
                 </tr>
                 <tr>
@@ -137,7 +137,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td style ="text-align:center;" colspan="3" >CATATAN</td>
+                    <td style="text-align:center;" colspan="3">CATATAN</td>
                     <td><?=$aloptama_kantor->catatan?></td>
                 </tr>
                 <tr>
@@ -201,7 +201,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td style ="text-align:center;" colspan="3" >CATATAN</td>
+                    <td style="text-align:center;" colspan="3">CATATAN</td>
                     <td><?=$sp->catatan?></td>
                 </tr>
                 <tr>
@@ -227,7 +227,7 @@
                     <td><?=$ji->catatan_biznet?></td>
                 </tr>
                 <tr>
-                    <td style ="text-align:center;" colspan="3" >CATATAN</td>
+                    <td style="text-align:center;" colspan="3">CATATAN</td>
                     <td><?=$ji->catatan?></td>
                 </tr>
 

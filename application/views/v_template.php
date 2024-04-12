@@ -502,7 +502,13 @@ font-size: 16px;">
                         <a href="#"><i class="fa fa-sitemap "></i> Check List Aloptama<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="<?=base_url('checklist/')?>">Kondisi Peralatan</a>
+                                <a href="<?=base_url('checklist/')?>">Kondisi Terbaru Peralatan</a>
+                            </li>
+                            <li>
+                                <a href="<?=base_url('checklist/pilih_tanggal')?>">Hasil Checklist Harian</a>
+                            </li>
+                            <li>
+                                <a href="<?=base_url('checklist/history')?>">History Checklist</a>
                             </li>
                             <li>
                                 <a href="<?=base_url('checklist/input_page/taman_alat')?>">Checklist Taman Alat</a>
@@ -512,10 +518,12 @@ font-size: 16px;">
                                     Kantor</a>
                             </li>
                             <li>
-                                <a href="<?=base_url('checklist/input_page/sistem_processing')?>">Checklist Sistem Processing</a>
+                                <a href="<?=base_url('checklist/input_page/sistem_processing')?>">Checklist Sistem
+                                    Processing</a>
                             </li>
                             <li>
-                                <a href="<?=base_url('checklist/input_page/jaringan_internet')?>">Checklist Jaringan Internet</a>
+                                <a href="<?=base_url('checklist/input_page/jaringan_internet')?>">Checklist Jaringan
+                                    Internet</a>
                             </li>
                         </ul>
                     </li>

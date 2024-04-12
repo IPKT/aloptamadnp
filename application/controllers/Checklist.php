@@ -193,47 +193,155 @@ class Checklist extends CI_Controller {
             }
         }
 
-          //  input checklist jaringan internet
-          public function input_jaringan_internet()
-          {
-              $this->form_validation->set_rules('petugas', 'Petugas', 'required', array(
-                  'required' => '%s Wajib Diisi !'
-              ));
-              $this->form_validation->set_rules('tanggal', 'Tanggal', 'required', array(
-                  'required' => '%s Wajib Diisi !'
-              ));
-              $this->form_validation->set_rules('shift', 'Shift', 'required', array(
-                  'required' => '%s Wajib Diisi !'
-              ));
+        //  input checklist jaringan internet
+        public function input_jaringan_internet()
+        {
+            $this->form_validation->set_rules('petugas', 'Petugas', 'required', array(
+                'required' => '%s Wajib Diisi !'
+            ));
+            $this->form_validation->set_rules('tanggal', 'Tanggal', 'required', array(
+                'required' => '%s Wajib Diisi !'
+            ));
+            $this->form_validation->set_rules('shift', 'Shift', 'required', array(
+                'required' => '%s Wajib Diisi !'
+            ));
+    
+            if ($this->form_validation->run()==FALSE) {
+                $data = array(
+                    'judul' => 'Cheklist Sistem Processing',
+                    'page' => 'checklist/v_input_jaringan_internet',
+                    //  'aloptama' => $this->m_aloptama->allData($jenis_aloptama)
+        
+                );
+                $this->load->view('v_template',$data,false);
+            }else{
+                $data = array(
+                    'petugas' => $this->input->post('petugas'),
+                    'tanggal' => $this->input->post('tanggal'),
+                    'shift' => $this->input->post('shift'),
+                    'waktu' => $this->input->post('waktu'),
+                    'lintas' => $this->input->post('lintas'),
+                    'catatan_lintas' => $this->input->post('catatan_lintas'),
+                    'indihome' => $this->input->post('indihome'),
+                    'catatan_indihome' => $this->input->post('catatan_indihome'),
+                    'biznet' => $this->input->post('biznet'),
+                    'catatan_biznet' => $this->input->post('catatan_biznet'),
+                    'catatan' => $this->input->post('catatan'),
+                
+                );
+    
+                $this->m_checklist->input($data,'tbl_jaringan_internet');
+                $this->session->set_flashdata('pesan', "Data checklist Jaringan Internet berhasil Disimpan !!");
+                redirect("checklist/input_page/jaringan_internet");
+            }
+        }
+
+    //pilih tanggal hasil checklist
+    public function pilih_tanggal()
+    {  
+        $data = array(
+            'judul' => 'Silahkan Pilih',
+            'page' => 'checklist/v_pilih_tanggal_checklist',
+        //  'aloptama' => $this->m_aloptama->allData($jenis_aloptama)
+
+        );
+        $this->load->view('v_template',$data,false);
+    }
+
+    //  check ketersediaan checklist
+    public function check_hasil()
+    {
+        $this->form_validation->set_rules('tanggal', 'Tanggal', 'required', array(
+            'required' => '%s Wajib Diisi !'
+        ));
+        $this->form_validation->set_rules('shift', 'Shift', 'required', array(
+            'required' => '%s Wajib Diisi !'
+        ));
+
+        if ($this->form_validation->run()==FALSE) {
+            $data = array(
+                'judul' => 'Silahkan Pilih',
+                'page' => 'checklist/v_pilih_tanggal_checklist',
+            //  'aloptama' => $this->m_aloptama->allData($jenis_aloptama)
+    
+            );
+            $this->load->view('v_template',$data,false);
+        }else{
+            // $data = array(
+            //     'petugas' => $this->input->post('petugas'),
+            //     'tanggal' => $this->input->post('tanggal'),
+            //     'shift' => $this->input->post('shift'),
+            //     'waktu' => $this->input->post('waktu'),
+            //     'lintas' => $this->input->post('lintas'),
+            //     'catatan_lintas' => $this->input->post('catatan_lintas'),
+            //     'indihome' => $this->input->post('indihome'),
+            //     'catatan_indihome' => $this->input->post('catatan_indihome'),
+            //     'biznet' => $this->input->post('biznet'),
+            //     'catatan_biznet' => $this->input->post('catatan_biznet'),
+            //     'catatan' => $this->input->post('catatan'),
+            
+            // );
+
+            $tanggal = $this->input->post('tanggal');
+            $shift = $this->input->post('shift');
+            $ta = $this->m_checklist->detail_checklist('tbl_taman_alat',$tanggal,$shift);
+            $ak = $this->m_checklist->detail_checklist('tbl_aloptama_kantor',$tanggal,$shift);
+            $sp = $this->m_checklist->detail_checklist('tbl_sistem_processing',$tanggal,$shift);
+            $ji = $this->m_checklist->detail_checklist('tbl_jaringan_internet',$tanggal,$shift);
+            $kosong = "";
+
+            if ($ta == null) {
+                $kosong = $kosong."Taman Alat, ";
+            }
+            if ($ak == null) {
+                $kosong = $kosong."Aloptama Kantor, ";
+            }
+            if ($sp == null) {
+                $kosong = $kosong."Sistem Processing, ";
+            }
+            if ($ji == null) {
+                $kosong = $kosong."Jaringan Internet ";
+            }
+
+            if ($ta != null && $ak != null && $sp != null && $ji != null ) {
+                $data = array(
+                    'judul' => 'Kondisi Peralatan Tanggal '.$tanggal,
+                    'page' => 'checklist/v_kondisi_peralatan',
+                    'taman_alat' =>$this->m_checklist->detail_checklist('tbl_taman_alat',$tanggal,$shift),
+                    'aloptama_kantor' =>$this->m_checklist->detail_checklist('tbl_aloptama_kantor',$tanggal,$shift),
+                    'sp' =>$this->m_checklist->detail_checklist('tbl_sistem_processing',$tanggal,$shift),
+                    'ji' =>$this->m_checklist->detail_checklist('tbl_jaringan_internet',$tanggal,$shift),
+                );
+                $this->load->view('v_template',$data,false);
+            } else {
+                $this->session->set_flashdata('pesan', "Data Checklist $kosong tidak tersedia pada $tanggal Shift $shift");
+                redirect("checklist/pilih_tanggal");
+            }
       
-              if ($this->form_validation->run()==FALSE) {
-                  $data = array(
-                      'judul' => 'Cheklist Sistem Processing',
-                      'page' => 'checklist/v_input_jaringan_internet',
-                     //  'aloptama' => $this->m_aloptama->allData($jenis_aloptama)
-          
-                  );
-                  $this->load->view('v_template',$data,false);
-              }else{
-                  $data = array(
-                      'petugas' => $this->input->post('petugas'),
-                      'tanggal' => $this->input->post('tanggal'),
-                      'shift' => $this->input->post('shift'),
-                      'waktu' => $this->input->post('waktu'),
-                      'lintas' => $this->input->post('lintas'),
-                      'catatan_lintas' => $this->input->post('catatan_lintas'),
-                      'indihome' => $this->input->post('indihome'),
-                      'catatan_indihome' => $this->input->post('catatan_indihome'),
-                      'biznet' => $this->input->post('biznet'),
-                      'catatan_biznet' => $this->input->post('catatan_biznet'),
-                      'catatan' => $this->input->post('catatan'),
-                   
-                  );
-      
-                  $this->m_checklist->input($data,'tbl_jaringan_internet');
-                  $this->session->set_flashdata('pesan', "Data checklist Jaringan Internet berhasil Disimpan !!");
-                  redirect("checklist/input_page/jaringan_internet");
-              }
-          }
+            
+        }
+    }
+
+    //JHistory Checklist
+    public function history()
+    {
+        $data = array(
+            'judul' => 'History Checklist',
+            'page' => 'checklist/v_history_checklist',
+            'ta' =>$this->m_checklist->allData('tbl_taman_alat','tanggal'),
+            'ak' =>$this->m_checklist->allData('tbl_aloptama_kantor','tanggal'),
+            'sp' =>$this->m_checklist->allData('tbl_sistem_processing','tanggal'),
+            'ji' =>$this->m_checklist->allData('tbl_jaringan_internet','tanggal'),
+            // 'aloptama_kantor' =>$this->m_checklist->dataTerbaru('tbl_aloptama_kantor'),
+            // 'sp' =>$this->m_checklist->dataTerbaru('tbl_sistem_processing'),
+            // 'ji' =>$this->m_checklist->dataTerbaru('tbl_jaringan_internet'),
+        );
+        $this->load->view('v_template',$data,false);
+    }
+
+
+
+        
+    
     
 }
