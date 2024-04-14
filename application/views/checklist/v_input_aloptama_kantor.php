@@ -67,6 +67,17 @@
             <input name="radio_broadcaster_lainnya" class="form-control" type="text" id="radio_broadcaster_lainnya"
                 style="display: none;" placeholder="Masukkan opsi lainnya">
         </div>
+        <div class="form-group">
+            <label for="" onclick="hideStyle('tdq')">TDQ Accelerograf Portable</label>
+            <select class="form-control" id="tdq" name="tdq"
+                onchange="toggleInput('tdq')">
+                <option value="Baik">Baik</option>
+                <option value="Rusak">Rusak</option>
+                <option value="lainnya">Lainnya</option>
+            </select>
+            <input name="tdq_lainnya" class="form-control" type="text" id="tdq_lainnya"
+                style="display: none;" placeholder="Masukkan opsi lainnya">
+        </div>
 
         <div class="form-group">
             <label for="" onclick="hideStyle('wrs')">WRS</label>

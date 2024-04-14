@@ -136,6 +136,7 @@ class Checklist extends CI_Controller {
                 'waktu' => $this->input->post('waktu'),
                 'seismo' => $this->input->post('seismo'),
                 'radio_broadcaster' => $this->input->post('radio_broadcaster'),
+                'tdq' => $this->input->post('tdq'),
                 'wrs' => $this->input->post('wrs'),
                 'intensity_realshake' => $this->input->post('intensity_realshake'),
                 'petir' => $this->input->post('petir'),
