@@ -89,6 +89,11 @@
             </select>
         </div>
         <div class="form-group">
+            <label for="">IP Address</label>
+            <textarea class="form-control textAreaMultiline" name="ip" rows="5"
+                placeholder=""><?=$aloptama->ip?></textarea>
+        </div>
+        <div class="form-group">
             <label for="">Nama PIC</label>
             <input class="form-control" name="nama_pic" placeholder="Nama PIC" value="<?=$aloptama->nama_pic?>">
         </div>

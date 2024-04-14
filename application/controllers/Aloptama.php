@@ -538,6 +538,7 @@ class Aloptama extends CI_Controller {
                 'lokasi' => $this->input->post('lokasi'),
                 'detail_lokasi' => $this->input->post('detail_lokasi'),
                 'tipe' => $this->input->post('tipe'),
+                'ip' => $this->input->post('ip'),
                 'nama_pic' => $this->input->post('nama_pic'),
                 'jabatan_pic' => $this->input->post('jabatan_pic'),
                 'kontak_pic' => $this->input->post('kontak_pic'),
