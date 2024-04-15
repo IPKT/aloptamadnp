@@ -148,6 +148,10 @@
     .hidden {
         display: none
     }
+
+    .selectedCell {
+    background-color: yellow !important;
+  }
     </style>
 </head>
 

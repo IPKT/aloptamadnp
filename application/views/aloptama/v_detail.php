@@ -24,6 +24,11 @@
                     <td><?=$aloptama->kode?></td>
                 </tr>
                 <tr>
+                    <td>Tipe</td>
+                    <td>:</td>
+                    <td><?=$aloptama->tipe?></td>
+                </tr>
+                <tr>
                     <td>Lokasi</td>
                     <td>:</td>
                     <td><?=$aloptama->lokasi?></td>

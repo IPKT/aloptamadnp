@@ -36,8 +36,8 @@
             $no = 1;
             foreach($semua_id_aloptama as $key => $id):
             ?>
-            <tr>
-                <td><?=$no?></td>
+            <tr onclick="changeRowColor(this)">
+                <td ><?=$no?></td>
                 <td><?php 
                 $aloptama = $CI->m_aloptama->detail_aloptama($jenis_aloptama,$id->id_aloptama);
                 
@@ -81,5 +81,20 @@ function del(url, kode) {
     if (confirm("yakin ingin menghapus kunjungan site " + kode)) {
         window.location.assign(url);
     }
+}
+</script>
+
+<script>
+var selectedRow = null;
+
+function changeRowColor(row) {
+  // Mengembalikan warna latar belakang baris yang sebelumnya dipilih ke warna asalnya
+  if (selectedRow !== null) {
+    selectedRow.classList.remove("selectedCell");
+  }
+
+  // Mengatur warna latar belakang baris baru dan memperbarui selectedRow
+  row.classList.add("selectedCell");
+  selectedRow = row;
 }
 </script>
