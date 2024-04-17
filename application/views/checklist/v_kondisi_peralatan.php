@@ -106,6 +106,14 @@
                 </tr>
                 <tr>
                     <td>2</td>
+                    <td style="white-space: nowrap; width: 1%;">TDQ Accelerograf</td>
+                    <td><?php if ($aloptama_kantor->tdq != 'Baik' and $aloptama_kantor->tdq != 'Rusak'  ) {echo "Dengan Catatan";} else {echo $aloptama_kantor->tdq;}?>
+                    </td>
+                    <td><?php if ($aloptama_kantor->tdq != 'Baik' and $aloptama_kantor->tdq != 'Rusak'  ) {echo $aloptama_kantor->tdq;} ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
                     <td style="white-space: nowrap; width: 1%;">Radio Broadcaster</td>
                     <td><?php if ($aloptama_kantor->radio_broadcaster != 'Baik' and $aloptama_kantor->radio_broadcaster != 'Rusak'  ) {echo "Dengan Catatan";} else {echo $aloptama_kantor->radio_broadcaster;}?>
                     </td>
