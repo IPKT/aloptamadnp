@@ -81,7 +81,7 @@ if ($this->session->flashdata('pesan')) {
                 if (($kerusakan= $CI->m_aloptama->kerusakan_kunjungan_terbaru($jenis_aloptama,$value->id)) == "") {
                   # code...
                 };?></td>
-                <td style="width: 25%;"><textarea class="form-control textAreaMultiline" name="text_wa" rows="4"
+                <td style="width: 25%;"><textarea class="form-control textAreaMultiline" name="text_wa" rows="5"
                         placeholder="" cols="50" disabled><?=$value->catatan?></textarea></td>
                 <td style="white-space: nowrap;">
                     <a class='btn btn-xs btn-success'

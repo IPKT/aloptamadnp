@@ -11,14 +11,16 @@
         }
         
         ?>
+<button id="download-pdf">Download PDF</button>
 
-<div>
+<button class="btn btn-m btn-success" type="button" data-kolom="#column-a">Cetak Laporan Excel</button>
+<div id="cetak">
     <div>
         <h5>Teknisi&emsp; &emsp; &emsp;&emsp;&emsp;&emsp;: <?=$taman_alat->petugas?></h5>
         <h5>Waktu Pengecekan&emsp;: <?=$taman_alat->tanggal?> <?=$taman_alat->waktu?> WITA</h5>
     </div>
-    <div class="table-responsive">
-        <table class="table table-striped table-bordered table-hover">
+    <div class="">
+        <table class="table-bordered" id="tabelChecklist">
             <thead>
                 <tr class="text-center">
                     <th style="white-space: nowrap; width: 1%;">No</th>
@@ -26,6 +28,7 @@
                     <th style="white-space: nowrap; width: 1%;">Kondisi Peralatan</th>
                     <th>Catatan</th>
                 </tr>
+
             </thead>
             <tbody>
                 <tr>
@@ -92,7 +95,7 @@
                     <td style="text-align:center;" colspan="3">CATATAN</td>
                     <td><?=$taman_alat->catatan?></td>
                 </tr>
-                <tr>
+                <tr class="highlight">
                     <td style="background-color: #ebba34;">B</td>
                     <td colspan="3" style="background-color: #ebba34;">Aloptama Geofisika</td>
                 </tr>
@@ -113,7 +116,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>2</td>
+                    <td>3</td>
                     <td style="white-space: nowrap; width: 1%;">Radio Broadcaster</td>
                     <td><?php if ($aloptama_kantor->radio_broadcaster != 'Baik' and $aloptama_kantor->radio_broadcaster != 'Rusak'  ) {echo "Dengan Catatan";} else {echo $aloptama_kantor->radio_broadcaster;}?>
                     </td>
@@ -121,7 +124,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>3</td>
+                    <td>4</td>
                     <td style="white-space: nowrap; width: 1%;">Warning Receiver System (WRS)</td>
                     <td><?php if ($aloptama_kantor->wrs != 'Baik' and $aloptama_kantor->wrs != 'Rusak'  ) {echo "Dengan Catatan";} else {echo $aloptama_kantor->wrs;}?>
                     </td>
@@ -129,7 +132,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>4</td>
+                    <td>5</td>
                     <td style="white-space: nowrap; width: 1%;">Intensitymeter Realshake</td>
                     <td><?php if ($aloptama_kantor->intensity_realshake != 'Baik' and $aloptama_kantor->intensity_realshake != 'Rusak'  ) {echo "Dengan Catatan";} else {echo $aloptama_kantor->intensity_realshake;}?>
                     </td>
@@ -137,7 +140,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>5</td>
+                    <td>6</td>
                     <td style="white-space: nowrap; width: 1%;">Lightning Detector</td>
                     <td><?php if ($aloptama_kantor->petir != 'Baik' and $aloptama_kantor->petir != 'Rusak'  ) {echo "Dengan Catatan";} else {echo $aloptama_kantor->petir;}?>
                     </td>
@@ -150,7 +153,7 @@
                 </tr>
                 <tr>
                     <td style="background-color: #ebba34;">C</td>
-                    <td colspan="3" style="background-color: #ebba34;">Sistem Processing</td>
+                    <td colspan="3" style="background-color: #ebba34;"><b>Sistem Processing</b></td>
                 </tr>
                 <tr>
                     <td>1</td>
@@ -252,4 +255,65 @@ function del(url, kode) {
         window.location.assign(url);
     }
 }
+
+
+function ExportToExcel(type, fn, dl) {
+    var elt = document.getElementById('cetak');
+    var wb = XLSX.utils.table_to_book(elt, {
+        sheet: "sheet1"
+    });
+    return dl ?
+        XLSX.write(wb, {
+            bookType: type,
+            bookSST: true,
+            type: 'base64'
+        }) :
+        XLSX.writeFile(wb, fn || ('MySheetName.' + (type || 'xlsx')));
+}
+
+$(document).on("click", "[data-kolom]", function() {
+
+    // var button = $(this),
+    //     header = $(button.data("kolom")),
+    //     table = header.closest("table"),
+    //     index = header.index() + 1, // convert to CSS's 1-based indexing
+    //     selector = "tbody tr td:nth-child(" + index + ")",
+    //     column = table.find(selector).add(header);
+
+
+
+    // column.toggleClass("disabled");
+
+    ExportToExcel('xlsx');
+});
+</script>
+
+<script>
+document.getElementById('download-pdf').addEventListener('click', function() {
+    var doc = new jspdf.jsPDF();
+    doc.text('Hello world!', 10, 10);
+    doc.autoTable({
+        html: '#tabelChecklist',
+        theme: 'grid',
+        columnStyles: {
+            0: {
+
+                tableWidth: 100,
+            },
+            1: {
+                tableWidth: 100,
+            },
+            2: {
+                halign: 'left',
+                tableWidth: 100,
+            },
+            3: {
+                halign: 'left',
+                tableWidth: 100,
+            }
+        },
+
+    })
+    doc.save('hello.pdf');
+});
 </script>

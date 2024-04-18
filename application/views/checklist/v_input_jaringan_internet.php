@@ -64,7 +64,7 @@
             </select>
         </div>
         <div class="form-group">
-        <input name="catatan_indihome" class="form-control" type="text" id=""
+            <input name="catatan_indihome" class="form-control" type="text" id=""
                 placeholder="Masukkan Catatan (speed test)">
         </div>
         <div class="form-group">
@@ -75,7 +75,7 @@
             </select>
         </div>
         <div class="form-group">
-        <input name="catatan_biznet" class="form-control" type="text" id=""
+            <input name="catatan_biznet" class="form-control" type="text" id=""
                 placeholder="Masukkan Catatan (speed test)">
         </div>
         <div class="form-group">

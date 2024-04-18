@@ -23,6 +23,10 @@ class M_gudang extends CI_Model {
         return $this->db->get_where('tbl_barang_keluar', array('id' => $id))->row();
     }
 
+    public function barangBerdasarkanJenis($tabel,$jenis_aloptama){
+        return $this->db->get_where('tbl_list_barang', array('jenis_aloptama' => $jenis_aloptama))->result();
+    }
+
 
 
 //    

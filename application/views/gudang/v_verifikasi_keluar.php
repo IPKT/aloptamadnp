@@ -43,7 +43,7 @@
             </tbody>
         </table>
 
-     
+
         <?php echo form_open_multipart("gudang/keluar/$id_barang")?>
 
         <div class="form-group">
@@ -60,6 +60,19 @@
         <div class="form-group">
             <label for="">Tujuan (Nama Site atau Stasiun)</label>
             <input class="form-control" name="tujuan" id="" placeholder="jika dilelang maka tulis 'dilelang'">
+        </div>
+        <div class="form-group">
+            <label for="" onclick="hideStyle('petugas')">Petugas</label>
+            <select class="form-control" name="petugas" id="petugas" onchange="toggleInput('petugas')">
+                <option selected disabled value="">Pilih Petugas yang Bertanggungjawab</option>
+                <option value="Putu Kembar">Putu Kembar</option>
+                <option value="Martin">Martin</option>
+                <option value="Arindea">Arindea</option>
+                <option value="lainnya">Lainnya</option>
+            </select>
+            <input name="petugas_lainnya" class="form-control" type="text" id="petugas_lainnya" style="display: none;"
+                placeholder="Masukkan opsi lainnya">
+
         </div>
 
         <div class="form-group">

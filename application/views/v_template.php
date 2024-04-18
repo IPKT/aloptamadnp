@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Aloptama DNP</title>
     <link rel="icon" type="image/x-icon" href="<?= base_url('gambar/logo bmkg.png') ?>">
+
+
     <!-- BOOTSTRAP STYLES-->
     <link href="<?=base_url('binary-admin/')?>assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FONTAWESOME STYLES-->
@@ -18,6 +20,8 @@
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
         integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
 
+    <!-- PDF PRINT -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.3/jspdf.umd.min.js"></script>
     <!-- JQUERY SCRIPTS -->
     <script src="<?=base_url('binary-admin/')?>assets/js/jquery-1.10.2.js"></script>
     <!-- BOOTSTRAP SCRIPTS -->
@@ -28,12 +32,12 @@
     <script src="<?=base_url('binary-admin/')?>assets/js/custom.js"></script>
     <!-- TABLE STYLES-->
     <link href="<?=base_url('binary-admin/')?>assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"
         integrity="sha512-qZvrmS2ekKPF2mSznTQsxqPgnpkI4DNTlrdUmTzrDgektczlKNRRhy5X5AAOnx5S09ydFYWWNSfcEqDTTHgtNA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"
         integrity="sha512-/cZZTKETbsuutvNXdPji/z8N+9e+LHq9D60JhcBCigq9I5a2VDEcLzml8PdVlVqzmWlVbhZCuTx+9CTi2xb30A=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
     <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
 
     <style>
@@ -150,8 +154,8 @@
     }
 
     .selectedCell {
-    background-color: yellow !important;
-  }
+        background-color: yellow !important;
+    }
     </style>
 </head>
 
@@ -476,7 +480,27 @@ font-size: 16px;">
                         <a href="#"><i class="fa fa-sitemap "></i> Gudang<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="<?=base_url('gudang')?>">Daftar Barang</a>
+                                <a href="#">Daftar Barang<span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li>
+                                        <a href="<?=base_url('gudang')?>">Semua Barang</a>
+                                    </li>
+                                    <li>
+                                        <a href="<?=base_url('gudang/intensity')?>">Intensity Realshake</a>
+                                    </li>
+                                    <li>
+                                        <a href="<?=base_url('gudang/accelero')?>">Accelero</a>
+                                    </li>
+                                    <li>
+                                        <a href="<?=base_url('gudang/wrs')?>">WRS</a>
+                                    </li>
+                                    <li>
+                                        <a href="<?=base_url('gudang/int_reis')?>">Intensity Reis</a>
+                                    </li>
+                                    <li>
+                                        <a href="<?=base_url('gudang/peralatan_kantor')?>">Peralatan Kantor</a>
+                                    </li>
+                                </ul>
                             </li>
                             <li>
                                 <a href="<?=base_url('gudang/input')?>">Input Barang</a>
@@ -484,22 +508,7 @@ font-size: 16px;">
                             <li>
                                 <a href="<?=base_url('gudang/barang_keluar')?>">Barang Keluar</a>
                             </li>
-                            <li class="hidden">
-                                <a href="#">Second Level Link<span class="fa arrow"></span></a>
-                                <ul class="nav nav-third-level">
-                                    <li>
-                                        <a href="#">Third Level Link</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Third Level Link</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Third Level Link</a>
-                                    </li>
 
-                                </ul>
-
-                            </li>
                         </ul>
                     </li>
                     <li>
@@ -564,6 +573,8 @@ font-size: 16px;">
     </div>
     <!-- /. WRAPPER  -->
     <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+    <!-- PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.3/jspdf.umd.min.js"></script>
     <!-- JQUERY SCRIPTS -->
     <script src="<?=base_url('binary-admin/')?>assets/js/jquery-1.10.2.js"></script>
     <!-- BOOTSTRAP SCRIPTS -->

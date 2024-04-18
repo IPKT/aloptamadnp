@@ -148,6 +148,7 @@ class Gudang extends CI_Controller {
                     'tujuan' => $this->input->post('tujuan'),
                     'tanggal_keluar' => $this->input->post('tanggal_keluar'),
                     'catatan_keluar' => $this->input->post('catatan_keluar'),
+                    'petugas' => $this->input->post('petugas'),
                     'status' => $this->input->post('status'),
                  
                 );
@@ -258,11 +259,19 @@ class Gudang extends CI_Controller {
     public function intensity()
      {
          $data = array(
-             'judul' => 'Metadata Hardware Intensity',
-             'page' => 'metadata/v_metadata',
-             'jenis_aloptama' => 'intensity',
-            //  'jenis_hardware' => $this->m_metadata->jenis_hardware_yang_ada(),
-            //  'id_aloptama' => $id_aloptama
+             'judul' => 'Daftar Barang Intensitymeter Realshake',
+             'page' => 'gudang/v_list_barang',
+             'list_barang'=>$this->m_gudang->barangBerdasarkanJenis('tbl_list_barang', 'Intensity Realshake')
+         );
+         $this->load->view('v_template',$data,false);
+     }
+
+     public function accelero()
+     {
+         $data = array(
+             'judul' => 'Daftar Barang Accelero NonColo',
+             'page' => 'gudang/v_list_barang',
+             'list_barang'=>$this->m_gudang->barangBerdasarkanJenis('tbl_list_barang', 'Accelero')
          );
          $this->load->view('v_template',$data,false);
      }
@@ -270,24 +279,37 @@ class Gudang extends CI_Controller {
      public function seismo()
      {
          $data = array(
-             'judul' => 'Metadata Hardware Seismo',
-             'page' => 'metadata/v_metadata',
-             'jenis_aloptama' => 'seismo',
-            //  'jenis_hardware' => $this->m_metadata->jenis_hardware_yang_ada(),
-            //  'id_aloptama' => $id_aloptama
+             'judul' => 'Daftar Barang Seismometer',
+             'page' => 'gudang/v_list_barang',
+             'list_barang'=>$this->m_gudang->barangBerdasarkanJenis('tbl_list_barang', 'Seismo')
          );
          $this->load->view('v_template',$data,false);
      }
 
-          public function detail_metadata($jenis_aloptama, $id_aloptama, $kode)
+     public function int_reis()
      {
          $data = array(
-             'judul' => 'Detail Metadata '.$jenis_aloptama.' '.$kode,
-             'page' => 'metadata/v_detail_metadata',
-             'jenis_aloptama' => $jenis_aloptama,
-             'hardware' => $this->m_metadata->detail_metadata($jenis_aloptama, $id_aloptama),
-             'jenis_hardware' => $this->m_metadata->jenis_hardware_yang_ada(),
-             'kode' => $kode
+             'judul' => 'Daftar Barang Intensity Reis',
+             'page' => 'gudang/v_list_barang',
+             'list_barang'=>$this->m_gudang->barangBerdasarkanJenis('tbl_list_barang', 'Intensity Reis')
+         );
+         $this->load->view('v_template',$data,false);
+     }
+     public function wrs()
+     {
+         $data = array(
+             'judul' => 'Daftar Barang WRS',
+             'page' => 'gudang/v_list_barang',
+             'list_barang'=>$this->m_gudang->barangBerdasarkanJenis('tbl_list_barang', 'WRS')
+         );
+         $this->load->view('v_template',$data,false);
+     }
+     public function peralatan_kantor()
+     {
+         $data = array(
+             'judul' => 'Daftar Barang Peralatan Kantor',
+             'page' => 'gudang/v_list_barang',
+             'list_barang'=>$this->m_gudang->barangBerdasarkanJenis('tbl_list_barang', 'Peralatan Kantor')
          );
          $this->load->view('v_template',$data,false);
      }

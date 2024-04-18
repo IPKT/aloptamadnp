@@ -19,8 +19,8 @@
         <?php echo form_open_multipart("gudang/input/")?>
 
         <div class="form-group">
-            <label for="">Jenis Barang</label>
-            <select class="form-control" name="jenis_barang" id="">
+            <label for="" onclick="hideStyle('jenis_barang')">Jenis Barang</label>
+            <select class="form-control" name="jenis_barang" id="jenis_barang" onchange="toggleInput('jenis_barang')">
                 <option disabled selected value="">Pilih Jenis Hardware</option>
                 <option value="Modem GSM">Modem GSM</option>
                 <option value="Sensor">Sensor</option>
@@ -30,7 +30,10 @@
                 <option value="Hub Switch">Hub Switch</option>
                 <option value="Terminal Arrester">Terminal Arrester</option>
                 <option value="Adaptor Cube">Adaptor Cube</option>
+                <option value="lainnya">Lainnya</option>
             </select>
+            <input name="jenis_barang_lainnya" class="form-control" type="text" id="jenis_barang_lainnya"
+                style="display: none;" placeholder="Masukkan opsi lainnya">
         </div>
         <div class="form-group">
             <label for="">Jenis Aloptama</label>
@@ -41,7 +44,7 @@
                 <option value="WRS">WRS</option>
                 <option value="Seismo">Seismo</option>
                 <option value="Accelero">Accelero</option>
-                <option value="Operasional">Operasional</option>
+                <option value="Peralatan Kantor">Peralatan Kantor</option>
             </select>
         </div>
         <div class="form-group">
@@ -239,4 +242,32 @@ var textAreas = document.getElementsByTagName('textarea');
 Array.prototype.forEach.call(textAreas, function(elem) {
     elem.placeholder = elem.placeholder.replace(/\\n/g, '\n');
 });
+
+
+
+function toggleInput(jenis) {
+    var id_lainnya = jenis + "_lainnya";
+    var selectBox = document.getElementById(jenis);
+    var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+    var lainnyaInput = document.getElementById(id_lainnya);
+
+    if (selectedValue === "lainnya") {
+        lainnyaInput.style.display = "block";
+        lainnyaInput.name = jenis;
+        selectBox.style.display = "none";
+    } else {
+        lainnyaInput.style.display = "none";
+        lainnyaInput.name = id_lainnya;
+    }
+}
+
+function hideStyle(jenis) {
+    var selectBox = document.getElementById(jenis);
+    selectBox.style.display = "block";
+    selectBox.selectedIndex = 0;
+    var id_lainnya = jenis + "_lainnya";
+    var lainnyaInput = document.getElementById(id_lainnya);
+    lainnyaInput.style.display = "none";
+    lainnyaInput.name = id_lainnya;
+}
 </script>

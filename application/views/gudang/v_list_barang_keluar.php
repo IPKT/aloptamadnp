@@ -27,6 +27,7 @@
                 <th>Tujuan</th>
                 <th>Catatan</th>
                 <th>Status</th>
+                <th>Petugas</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -45,6 +46,7 @@
                 <td><?=$value->tujuan?></td>
                 <td><?=$value->catatan_keluar?></td>
                 <td><?=$value->status?></td>
+                <td><?=$value->petugas?></td>
 
                 <td>
                     <a class='btn btn-xs btn-success <?php if ($value->status =='permanen')  {echo 'hidden';}?>'
