@@ -11,16 +11,16 @@
         }
         
         ?>
-<button id="download-pdf">Download PDF</button>
+<button class="btn btn-m btn-success" id="download-pdf">Cetak Laporan (PDF)</button>
 
-<button class="btn btn-m btn-success" type="button" data-kolom="#column-a">Cetak Laporan Excel</button>
+<button class="btn btn-m btn-success hidden" type="button" data-kolom="#column-a">Cetak Laporan Excel</button>
 <div id="cetak">
     <div>
         <h5>Teknisi&emsp; &emsp; &emsp;&emsp;&emsp;&emsp;: <?=$taman_alat->petugas?></h5>
         <h5>Waktu Pengecekan&emsp;: <?=$taman_alat->tanggal?> <?=$taman_alat->waktu?> WITA</h5>
     </div>
-    <div class="">
-        <table class="table-bordered" id="tabelChecklist">
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered table-hover" id="tabelChecklist">
             <thead>
                 <tr class="text-center">
                     <th style="white-space: nowrap; width: 1%;">No</th>
@@ -290,11 +290,23 @@ $(document).on("click", "[data-kolom]", function() {
 
 <script>
 document.getElementById('download-pdf').addEventListener('click', function() {
-    var doc = new jspdf.jsPDF();
-    doc.text('Hello world!', 10, 10);
+    var doc = new jspdf.jsPDF('p', 'mm', 'a4');
+    doc.setFontSize(14);
+    doc.text("LAPORAN CHECKLIST PERALATAN", 65, 15)
+    doc.setFontSize(12);
+    doc.text("STASIUN GEOFISIKA DENPASAR", 72, 20)
+    doc.text(
+        "=========================================================================",
+        15, 25)
+    var petugas = "Petugas : <?=$taman_alat->petugas?>"
+    var tanggal = "Tanggal : <?=$taman_alat->tanggal?> (<?=$taman_alat->waktu?>) WITA"
+    doc.setFontSize(10);
+    doc.text(petugas, 15, 30);
+    doc.text(tanggal, 15, 35);
     doc.autoTable({
         html: '#tabelChecklist',
         theme: 'grid',
+        startY: 40,
         columnStyles: {
             0: {
 
@@ -312,8 +324,22 @@ document.getElementById('download-pdf').addEventListener('click', function() {
                 tableWidth: 100,
             }
         },
+        styles: {
+            cellPadding: 1,
+            fontSize: 10, // Mengatur ukuran font untuk tabel menjadi 9
+            lineColor: 100,
+            lineWidth: 0.3,
+            textColor: 0,
+        },
+        bodyStyles: {
+            minCellHeight: 3 // Mengatur tinggi minimal baris menjadi 5
+        },
 
-    })
+    });
+    doc.setFontSize(12);
+    doc.text("TEKNISI", 160, 240);
+    var petugas = "<?=$taman_alat->petugas?>";
+    doc.text(petugas, 145, 270);
     doc.save('hello.pdf');
 });
 </script>
