@@ -404,20 +404,20 @@ font-size: 16px;">
                                 class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="<?=base_url('acc_noncolo/')?>">Peta acc_noncolo</a>
+                                <a href="<?=base_url('aloptama/home/acc_noncolo')?>">Peta acc_noncolo</a>
                             </li>
                             <li>
-                                <a href="<?=base_url('acc_noncolo/input_page')?>">Input acc_noncolo</a>
+                                <a href="<?=base_url('aloptama/input_page/seismo')?>">Input acc_noncolo</a>
                             </li>
                             <li>
-                                <a href="<?=base_url('acc_noncolo/input_page_kunjungan')?>">Input Kunjungan
+                                <a href="<?=base_url('aloptama/input_page_kunjungan/acc_noncolo')?>">Input Kunjungan
                                     acc_noncolo</a>
                             </li>
                             <li>
-                                <a href="<?=base_url('acc_noncolo/list_kunjungan')?>">List Kunjungan acc_noncolo</a>
+                                <a href="<?=base_url('aloptama/list_kunjungan/acc_noncolo')?>">List Kunjungan acc_noncolo</a>
                             </li>
                             <li>
-                                <a href="<?=base_url('acc_noncolo/input_page_kondisi_terkini')?>">Input Kondisi
+                                <a href="<?=base_url('aloptama/input_page_kondisi_terkini')?>">Input Kondisi
                                     Terkini</a>
                             </li>
                             <li>
@@ -442,20 +442,20 @@ font-size: 16px;">
                         <a href="#"><i class="fa fa-sitemap "></i> Intensitymeter Reis<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="<?=base_url('int_reis/')?>">Peta Intensity Reis</a>
+                                <a href="<?=base_url('aloptama/home/int_reis')?>">Peta Intensity Reis</a>
                             </li>
                             <li>
-                                <a href="<?=base_url('int_reis/input_page')?>">Input Intensity Reis</a>
+                                <a href="<?=base_url('aloptama/input_page/int_reis')?>">Input Intensity Reis</a>
                             </li>
                             <li>
-                                <a href="<?=base_url('int_reis/input_page_kunjungan')?>">Input Kunjungan
+                                <a href="<?=base_url('aloptama/input_page_kunjungan/int_reis')?>">Input Kunjungan
                                     Intensity Reis</a>
                             </li>
                             <li>
-                                <a href="<?=base_url('int_reis/list_kunjungan')?>">List Kunjungan Intensity Reis</a>
+                                <a href="<?=base_url('aloptama/list_kunjungan/int_reis')?>">List Kunjungan Intensity Reis</a>
                             </li>
                             <li>
-                                <a href="<?=base_url('int_reis/input_page_kondisi_terkini')?>">Input Kondisi
+                                <a href="<?=base_url('aloptama/input_page_kondisi_terkini')?>">Input Kondisi
                                     Terkini</a>
                             </li>
                             <li>
@@ -524,20 +524,26 @@ font-size: 16px;">
                                 <a href="<?=base_url('checklist/history')?>">History Checklist</a>
                             </li>
                             <li>
-                                <a href="<?=base_url('checklist/input_page/taman_alat')?>">Checklist Taman Alat</a>
+                                <a href="#">Input Checklist<span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li>
+                                        <a href="<?=base_url('checklist/input_page/taman_alat')?>">Checklist Taman Alat</a>
+                                    </li>
+                                    <li>
+                                        <a href="<?=base_url('checklist/input_page/aloptama_kantor')?>">Checklist Aloptama
+                                            Kantor</a>
+                                    </li>
+                                    <li>
+                                        <a href="<?=base_url('checklist/input_page/sistem_processing')?>">Checklist Sistem
+                                            Processing</a>
+                                    </li>
+                                    <li>
+                                        <a href="<?=base_url('checklist/input_page/jaringan_internet')?>">Checklist Jaringan
+                                            Internet</a>
+                                    </li>
+                                </ul>
                             </li>
-                            <li>
-                                <a href="<?=base_url('checklist/input_page/aloptama_kantor')?>">Checklist Aloptama
-                                    Kantor</a>
-                            </li>
-                            <li>
-                                <a href="<?=base_url('checklist/input_page/sistem_processing')?>">Checklist Sistem
-                                    Processing</a>
-                            </li>
-                            <li>
-                                <a href="<?=base_url('checklist/input_page/jaringan_internet')?>">Checklist Jaringan
-                                    Internet</a>
-                            </li>
+             
                         </ul>
                     </li>
                     <li class="hidden">

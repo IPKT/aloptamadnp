@@ -340,6 +340,13 @@ class Checklist extends CI_Controller {
         $this->load->view('v_template',$data,false);
     }
 
+    //delete checklist
+    public function delete_checklist($tabel , $id){
+        $this->m_checklist->delete($tabel, $id);
+        $this->session->set_flashdata('pesan', 'Data Checklist berhasil dihapus !!');
+        redirect('checklist/history');
+    }
+
 
 
         

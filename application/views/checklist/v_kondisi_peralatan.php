@@ -33,7 +33,7 @@
             <tbody>
                 <tr>
                     <td style="background-color: #ebba34;">A</td>
-                    <td colspan="3" style="background-color: #ebba34;">Taman Alat</td>
+                    <td colspan="3" style="background-color: #ebba34;">TAMAN ALAT</td>
                 </tr>
                 <tr>
                     <td>1</td>
@@ -93,11 +93,20 @@
                 </tr>
                 <tr>
                     <td style="text-align:center;" colspan="3">CATATAN</td>
-                    <td><?=$taman_alat->catatan?></td>
+                    <td><?php 
+                     if ($taman_alat->catatan != NULL and $taman_alat->catatan != "" ) {
+                        # code...
+                        $cttn = str_replace("\n", '<br />', $taman_alat->catatan);
+                        echo $cttn;
+                      };
+                    ?></td>
+                </tr>
+                <tr>
+                     <td colspan="4"></td>
                 </tr>
                 <tr class="highlight">
                     <td style="background-color: #ebba34;">B</td>
-                    <td colspan="3" style="background-color: #ebba34;">Aloptama Geofisika</td>
+                    <td colspan="3" style="background-color: #ebba34;">ALOPTAMA GEOFISIKA</td>
                 </tr>
                 <tr>
                     <td>1</td>
@@ -149,11 +158,20 @@
                 </tr>
                 <tr>
                     <td style="text-align:center;" colspan="3">CATATAN</td>
-                    <td><?=$aloptama_kantor->catatan?></td>
+                    <td><?php 
+                     if ($aloptama_kantor->catatan != NULL and $aloptama_kantor->catatan != "" ) {
+                        # code...
+                        $cttn = str_replace("\n", '<br />', $aloptama_kantor->catatan);
+                        echo $cttn;
+                      };
+                    ?></td>
+                </tr>
+                <tr>
+                     <td colspan="4"></td>
                 </tr>
                 <tr>
                     <td style="background-color: #ebba34;">C</td>
-                    <td colspan="3" style="background-color: #ebba34;"><b>Sistem Processing</b></td>
+                    <td colspan="3" style="background-color: #ebba34;"><b>SISTEM PROCESSING</b></td>
                 </tr>
                 <tr>
                     <td>1</td>
@@ -213,11 +231,20 @@
                 </tr>
                 <tr>
                     <td style="text-align:center;" colspan="3">CATATAN</td>
-                    <td><?=$sp->catatan?></td>
+                    <td><?php 
+                     if ($sp->catatan != NULL and $sp->catatan != "" ) {
+                        # code...
+                        $cttn = str_replace("\n", '<br />', $sp->catatan);
+                        echo $cttn;
+                      };
+                    ?></td>
+                </tr>
+                <tr>
+                     <td colspan="4"></td>
                 </tr>
                 <tr>
                     <td style="background-color: #ebba34;">D</td>
-                    <td colspan="3" style="background-color: #ebba34;">Jaringan Internet</td>
+                    <td colspan="3" style="background-color: #ebba34;">JARINGAN INTERNET</td>
                 </tr>
                 <tr>
                     <td>1</td>
@@ -239,9 +266,14 @@
                 </tr>
                 <tr>
                     <td style="text-align:center;" colspan="3">CATATAN</td>
-                    <td><?=$ji->catatan?></td>
+                    <td><?php 
+                     if ($ji->catatan != NULL and $ji->catatan != "" ) {
+                        # code...
+                        $cttn = str_replace("\n", '<br />', $ji->catatan);
+                        echo $cttn;
+                      };
+                    ?></td>
                 </tr>
-
             </tbody>
 
         </table>
@@ -291,6 +323,13 @@ $(document).on("click", "[data-kolom]", function() {
 <script>
 document.getElementById('download-pdf').addEventListener('click', function() {
     var doc = new jspdf.jsPDF('p', 'mm', 'a4');
+
+    var imageUrl = '<?= base_url('gambar/logo bmkg.png') ?>';
+    doc.addImage(imageUrl, 'PNG', 15, 10, 10, 10);
+
+
+
+    
     doc.setFontSize(14);
     doc.text("LAPORAN CHECKLIST PERALATAN", 65, 15)
     doc.setFontSize(12);
@@ -313,11 +352,12 @@ document.getElementById('download-pdf').addEventListener('click', function() {
                 tableWidth: 100,
             },
             1: {
-                tableWidth: 100,
+                halign: 'left',
+                cellWidth: 55,
             },
             2: {
                 halign: 'left',
-                tableWidth: 100,
+                cellWidth: 32,
             },
             3: {
                 halign: 'left',
@@ -336,10 +376,12 @@ document.getElementById('download-pdf').addEventListener('click', function() {
         },
 
     });
+    lastY = doc.lastAutoTable.finalY;
+    console.log(lastY);
     doc.setFontSize(12);
-    doc.text("TEKNISI", 160, 240);
+    doc.text("TEKNISI", 160, lastY + 5);
     var petugas = "<?=$taman_alat->petugas?>";
-    doc.text(petugas, 145, 270);
-    doc.save('hello.pdf');
+    doc.text(petugas, 145, lastY + 20);
+    doc.save('Laporan Harian_<?=$taman_alat->tanggal?>_<?=$taman_alat->shift?>.pdf');
 });
 </script>

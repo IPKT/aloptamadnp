@@ -27,7 +27,7 @@
                 </td>
                 <td style="white-space: nowrap;">
                     <a class='btn btn-xs btn-danger <?php if ($this->session->userdata('role_id') == 2) {echo 'hidden';}?>'
-                        onclick="del('<?=base_url('aloptama/delete_kunjungan/'.'/'.$value->id) ?>' , '<?=$value->id?>')">
+                    onclick="del('<?=base_url('checklist/delete_checklist/tbl_taman_alat/'.$value->id) ?>')">
                         Delete</a>
                 </td>
             </tr>
@@ -65,7 +65,7 @@
                 </td>
                 <td style="white-space: nowrap;">
                     <a class='btn btn-xs btn-danger <?php if ($this->session->userdata('role_id') == 2) {echo 'hidden';}?>'
-                        onclick="del('<?=base_url('aloptama/delete_kunjungan/'.'/'.$value->id) ?>' , '<?=$value->id?>')">
+                        onclick="del('<?=base_url('checklist/delete_checklist/tbl_aloptama_kantor/'.$value->id) ?>')">
                         Delete</a>
                 </td>
             </tr>
@@ -104,7 +104,7 @@
                 </td>
                 <td style="white-space: nowrap;">
                     <a class='btn btn-xs btn-danger <?php if ($this->session->userdata('role_id') == 2) {echo 'hidden';}?>'
-                        onclick="del('<?=base_url('aloptama/delete_kunjungan/'.'/'.$value->id) ?>' , '<?=$value->id?>')">
+                    onclick="del('<?=base_url('checklist/delete_checklist/tbl_sistem_processing/'.$value->id) ?>')">
                         Delete</a>
                 </td>
             </tr>
@@ -143,7 +143,7 @@
                 </td>
                 <td style="white-space: nowrap;">
                     <a class='btn btn-xs btn-danger <?php if ($this->session->userdata('role_id') == 2) {echo 'hidden';}?>'
-                        onclick="del('<?=base_url('aloptama/delete_kunjungan/'.'/'.$value->id) ?>' , '<?=$value->id?>')">
+                    onclick="del('<?=base_url('checklist/delete_checklist/tbl_jaringan_internet/'.$value->id) ?>')">
                         Delete</a>
                 </td>
             </tr>
@@ -155,8 +155,8 @@
 
 
 <script>
-function del(url, kode) {
-    if (confirm("yakin ingin menghapus kunjungan site " + kode)) {
+function del(url) {
+    if (confirm("yakin ingin menghapus checklist ? ")) {
         window.location.assign(url);
     }
 }
