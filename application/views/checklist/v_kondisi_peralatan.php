@@ -365,7 +365,7 @@ document.getElementById('download-pdf').addEventListener('click', function() {
             }
         },
         styles: {
-            cellPadding: 1,
+            cellPadding: 0.8,
             fontSize: 10, // Mengatur ukuran font untuk tabel menjadi 9
             lineColor: 100,
             lineWidth: 0.3,
