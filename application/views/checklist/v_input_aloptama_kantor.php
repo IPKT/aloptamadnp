@@ -34,6 +34,7 @@
                 <option disabled selected value="">Pilih Shift</option>
                 <option value="Pagi">Pagi</option>
                 <option value="Siang">Siang</option>
+                <option value="Malam">Malam</option>
             </select>
         </div>
 
