@@ -41,6 +41,11 @@ class M_metadata extends CI_Model {
       $this->db->update('hardware_aloptama', $data);
    }
 
+   // hapus hardware
+   public function delete_hardware($tabel, $id){
+      $this->db->where('id', $id);
+      $this->db->delete($tabel);
+   }
 
 
 

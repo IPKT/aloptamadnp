@@ -170,6 +170,7 @@ class Metadata extends CI_Controller {
              'hardware' => $this->m_metadata->detail_metadata($jenis_aloptama, $id_aloptama),
              'jenis_hardware' => $this->m_metadata->jenis_hardware_yang_ada(),
              'kode' => $kode,
+             'id_aloptama' => $id_aloptama,
              'aloptama' => $this->m_aloptama->detail_aloptama($jenis_aloptama,$id_aloptama)
          );
          $this->load->view('v_template',$data,false);
@@ -277,6 +278,13 @@ class Metadata extends CI_Controller {
                  redirect("metadata/detail_metadata/$jenis_aloptama/$id_aloptama/$kode");
              }
          }
+
+    public function delete_hardware($id_hardware, $kodeSite, $id_aloptama, $jenis_aloptama){
+        $this->m_metadata->delete_hardware('hardware_aloptama', $id_hardware);
+        $this->session->set_flashdata('pesan', "Data Hardware site $kodeSite berhasil diperbaharui !!");
+        redirect("metadata/detail_metadata/$jenis_aloptama/$id_aloptama/$kodeSite");
+        
+    }
 
 
 }

@@ -244,7 +244,7 @@ L.marker([<?=$value->koordinat?>] <?php if ($value->kondisi_terkini =='ON' && $r
     "<div class='text-center mt-1' style= 'margin: 1px;'>" +
     "<a class='btn btn-xs btn-success' href='<?=base_url('aloptama/detail_aloptama/'.$jenis_aloptama.'/'.$value->id) ?>'> Detail</a> " +
     "<a class='btn btn-xs btn-warning <?php if ($this->session->userdata('role_id') == 2) {echo 'hidden';}?>' href='<?=base_url('aloptama/edit/'.$jenis_aloptama.'/'.$value->id) ?>'> Edit</a> " +
-    "<a class='btn btn-xs btn-danger <?php if ($this->session->userdata('role_id') == 2) {echo 'hidden';}?>' onclick='del(`<?=base_url('haha/delete/'.$value->id) ?>`,`<?=$value->kode?>`)'> Delete</a> " +
+    "<a class='btn btn-xs btn-danger hidden <?php if ($this->session->userdata('role_id') == 2) {echo 'hidden';}?>' onclick='del(`<?=base_url('haha/delete/'.$value->id) ?>`,`<?=$value->kode?>`)'> Delete</a> " +
     "</div>").addTo(map);
 <?php    } ?>
 <?php $jml_int = $CI->m_aloptama->jumlah_aloptama($jenis_aloptama);
