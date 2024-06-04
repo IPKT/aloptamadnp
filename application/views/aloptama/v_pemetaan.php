@@ -227,7 +227,7 @@ L.marker([<?=$value->koordinat?>] <?php if ($value->kondisi_terkini =='ON' && $r
             
             $jml = $CI->m_aloptama->ambil_jumlah_kunjungan($jenis_aloptama,$value->id);
             echo $value->kode.' ('.$jml.')'?></h7></b>", {
-    permanent: false,
+    permanent: true,
     direction: 'right'
 }).bindPopup("<h5><b> <?=$value->kode.' ('.$jml.')' ?></b> <h5>" +
     "<h6><?=$value->lokasi ?> </h6>" +
