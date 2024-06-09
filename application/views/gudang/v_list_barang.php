@@ -50,7 +50,7 @@
                         href='<?=base_url('gudang/edit_page_barang/'.$value->id) ?>'>
                         Edit</a>
                     <a class='btn btn-xs btn-danger <?php if ($this->session->userdata('role_id') == 2) {echo 'hidden';}?>'
-                        onclick="del('<?=base_url('intensity/delete_kunjungan/'.$value->id) ?>' , '<?=$value->kode?>')">
+                        onclick="del('<?=base_url('gudang/delete_kunjungan/'.$value->id) ?>' , '<?=$value->jenis_barang?>')">
                         Delete</a>
                 </td>
             </tr>
