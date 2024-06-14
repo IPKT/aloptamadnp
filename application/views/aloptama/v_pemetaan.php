@@ -14,7 +14,7 @@ if ($this->session->flashdata('pesan')) {
 
 <div class="table-responsive m-3">
 
-    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+    <table class="table table-striped table-bordered table-hover small" id="dataTables-example">
         <thead>
             <tr>
                 <th>No</th>
@@ -81,7 +81,7 @@ if ($this->session->flashdata('pesan')) {
                 if (($kerusakan= $CI->m_aloptama->kerusakan_kunjungan_terbaru($jenis_aloptama,$value->id)) == "") {
                   # code...
                 };?></td>
-                <td style="width: 25%;"><textarea class="form-control textAreaMultiline" name="text_wa" rows="5"
+                <td style="width: 25%;"><textarea class="form-control textAreaMultiline small" name="text_wa" rows="5"
                         placeholder="" cols="50" disabled><?=$value->catatan?></textarea></td>
                 <td style="white-space: nowrap;">
                     <a class='btn btn-xs btn-success'
