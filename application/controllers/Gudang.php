@@ -251,6 +251,14 @@ class Gudang extends CI_Controller {
         }
     }
 
+    // delete list barang
+
+    public function delete($id_barang, $jenis_barang){
+        $this->m_gudang->delete('tbl_list_barang',$id_barang);
+        $this->session->set_flashdata('pesan', "Data Barang berupa  $jenis_barang berhasil dihapus !!");
+        redirect('gudang/');
+    }
+
 
 
 

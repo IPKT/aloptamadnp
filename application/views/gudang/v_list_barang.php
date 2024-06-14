@@ -13,7 +13,7 @@
         ?>
 
 <div class="table-responsive">
-    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+    <table class="table table-striped table-bordered table-hover small" id="dataTables-example">
         <thead>
             <tr>
                 <th>No</th>
@@ -50,7 +50,7 @@
                         href='<?=base_url('gudang/edit_page_barang/'.$value->id) ?>'>
                         Edit</a>
                     <a class='btn btn-xs btn-danger <?php if ($this->session->userdata('role_id') == 2) {echo 'hidden';}?>'
-                        onclick="del('<?=base_url('gudang/delete_kunjungan/'.$value->id) ?>' , '<?=$value->jenis_barang?>')">
+                        onclick="del('<?=base_url('gudang/delete/'.$value->id.'/'.$value->jenis_barang) ?>' , '<?=$value->jenis_barang?>', '<?=$value->sn?>')">
                         Delete</a>
                 </td>
             </tr>
@@ -61,8 +61,8 @@
 </div>
 
 <script>
-function del(url, kode) {
-    if (confirm("yakin ingin menghapus kunjungan site " + kode)) {
+function del(url, jenis_barang, sn) {
+    if (confirm("yakin ingin menghapus " + jenis_barang + " dengan SN "+sn + " ?")) {
         window.location.assign(url);
     }
 }
