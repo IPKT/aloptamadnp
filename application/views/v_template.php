@@ -414,7 +414,8 @@ font-size: 16px;">
                                     acc_noncolo</a>
                             </li>
                             <li>
-                                <a href="<?=base_url('aloptama/list_kunjungan/acc_noncolo')?>">List Kunjungan acc_noncolo</a>
+                                <a href="<?=base_url('aloptama/list_kunjungan/acc_noncolo')?>">List Kunjungan
+                                    acc_noncolo</a>
                             </li>
                             <li>
                                 <a href="<?=base_url('aloptama/input_page_kondisi_terkini')?>">Input Kondisi
@@ -452,7 +453,8 @@ font-size: 16px;">
                                     Intensity Reis</a>
                             </li>
                             <li>
-                                <a href="<?=base_url('aloptama/list_kunjungan/int_reis')?>">List Kunjungan Intensity Reis</a>
+                                <a href="<?=base_url('aloptama/list_kunjungan/int_reis')?>">List Kunjungan Intensity
+                                    Reis</a>
                             </li>
                             <li>
                                 <a href="<?=base_url('aloptama/input_page_kondisi_terkini')?>">Input Kondisi
@@ -527,23 +529,27 @@ font-size: 16px;">
                                 <a href="#">Input Checklist<span class="fa arrow"></span></a>
                                 <ul class="nav nav-third-level">
                                     <li>
-                                        <a href="<?=base_url('checklist/input_page/taman_alat')?>">Checklist Taman Alat</a>
+                                        <a href="<?=base_url('checklist/input_page/taman_alat')?>">Checklist Taman
+                                            Alat</a>
                                     </li>
                                     <li>
-                                        <a href="<?=base_url('checklist/input_page/aloptama_kantor')?>">Checklist Aloptama
+                                        <a href="<?=base_url('checklist/input_page/aloptama_kantor')?>">Checklist
+                                            Aloptama
                                             Kantor</a>
                                     </li>
                                     <li>
-                                        <a href="<?=base_url('checklist/input_page/sistem_processing')?>">Checklist Sistem
+                                        <a href="<?=base_url('checklist/input_page/sistem_processing')?>">Checklist
+                                            Sistem
                                             Processing</a>
                                     </li>
                                     <li>
-                                        <a href="<?=base_url('checklist/input_page/jaringan_internet')?>">Checklist Jaringan
+                                        <a href="<?=base_url('checklist/input_page/jaringan_internet')?>">Checklist
+                                            Jaringan
                                             Internet</a>
                                     </li>
                                 </ul>
                             </li>
-             
+
                         </ul>
                     </li>
                     <li class="hidden">
