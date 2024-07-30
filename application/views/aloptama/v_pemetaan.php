@@ -7,7 +7,7 @@ if ($this->session->flashdata('pesan')) {
 }
 ?>
 <div id="map" style="width: 100%; height: 700px;"></div>
-<h2>List Intensity</h2>
+<h2>List Aloptama</h2>
 <button class="btn btn-m btn-success" type="button" data-column="#column-a">Cetak Laporan PDF</button><span>
 </span><button class="btn btn-m btn-success" type="button" data-kolom="#column-a">Cetak Laporan Excel</button> <br>
 </br> <br> </br>
@@ -29,7 +29,7 @@ if ($this->session->flashdata('pesan')) {
             $total_kunjungan = $CI->m_aloptama->total_kunjungan($jenis_aloptama); 
             echo '('.$total_kunjungan.')';?>
                 </th>
-                <th style="white-space: nowrap; width: 1%;">Last kunjung</th>
+                <th style="white-space: nowrap; width: 1%;">Kunjungan Terakhir</th>
                 <th>Rekomendasi Terakhir</th>
                 <th>Kerusakan</th>
                 <th>Catatan Teknisi</th>
@@ -54,8 +54,8 @@ if ($this->session->flashdata('pesan')) {
                     <?=$jml = $CI->m_aloptama->ambil_jumlah_kunjungan($jenis_aloptama,$value->id);?></td>
                 <td style="white-space: nowrap; width: 1%;"><?php $tanggal= $CI->m_aloptama->tanggal_kunjungan_terbaru($jenis_aloptama,$value->id);
                     if ($tanggal!=null) {
-                    $newDate = date("d/m/y", strtotime($tanggal));  
-                    echo strval($newDate);  
+                    $newDate = date("d/m/yy", strtotime($tanggal));  
+                    echo strval($tanggal);  
                     }
                     ?></td>
 
